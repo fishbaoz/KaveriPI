@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject ProjectType="Visual C++" Version="8.00" Name="AMD_Proc_GNB_Modules_GnbPcieCommClkCfg" RootNamespace="AMD_Proc_GNB_Modules_GnbPcieCommClkCfg" ProjectGUID="{1E93389A-32D8-483A-BDDE-A7FC15C5DE0E}">
+	<Platforms>
+		<Platform Name="Win32"/>
+	</Platforms>
+	<ToolFiles>
+		<DefaultToolFile FileName="masm.rules"/>
+	</ToolFiles>
+	<Configurations>
+		<Configuration Name="Debug|Win32" OutputDirectory="$(AGESA_OptsDir)$(ConfigurationName)\" IntermediateDirectory="$(AGESA_OptsDir)$(ConfigurationName)\$(ProjectName)\" ConfigurationType="4" DeleteExtensionsOnClean="*.obj;*.lib;*.tmp;*.dll;*.B1;*.BDI;$(IntDir)$(ProjectName)_BuildLog.htm" WholeProgramOptimization="0" BuildLogFile="$(IntDir)$(ProjectName)_BuildLog.htm">
+			<Tool Name="VCPreBuildEventTool"/>
+			<Tool Name="VCCustomBuildTool"/>
+			<Tool Name="MASM" IncludePaths=""/>
+			<Tool Name="VCXMLDataGeneratorTool"/>
+			<Tool Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool Name="VCMIDLTool"/>
+			<Tool Name="VCCLCompilerTool" AdditionalOptions="/Gs16384" AdditionalIncludeDirectories="&quot;$(AGESA_OptsDir)&quot;;&quot;$(AGESA_ROOT)&quot;;&quot;$(AGESA_ROOT)Include\&quot;;&quot;$(AGESA_ROOT)Proc\IDS\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Common\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieConfig\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Modules\GnbCommonLib\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieCommClkCfg\&quot;;" Optimization="1" FavorSizeOrSpeed="2" WholeProgramOptimization="true" IgnoreStandardIncludePath="false" BufferSecurityCheck="false" DisableLanguageExtensions="true" ObjectFile="$(IntDir)" ProgramDataBaseFileName="$(IntDir)$(ProjectName).pdb" XMLDocumentationFileName="$(IntDir)" WarningLevel="4" WarnAsError="true" Detect64BitPortabilityProblems="true" DebugInformationFormat="3" CompileAs="1"/>
+			<Tool Name="VCManagedResourceCompilerTool"/>
+			<Tool Name="VCResourceCompilerTool"/>
+			<Tool Name="VCPreLinkEventTool"/>
+			<Tool Name="VCLinkerTool" LinkLibraryDependencies="true" AdditionalOptions="/ALIGN:16   /ignore:4096,4108" AdditionalDependencies="$(NOINHERIT)" OutputFile="$(OutDir)$(ProjectName).dll" LinkIncremental="1" AdditionalLibraryDirectories="&quot;$(OutDir)$(ConfigurationName)&quot;" GenerateManifest="false" ManifestFile="$(IntDir)$(TargetFileName).intermediate.manifest" IgnoreAllDefaultLibraries="true" GenerateDebugInformation="true" ProgramDatabaseFile="$(IntDir)$(TargetFileName).pdb" GenerateMapFile="true" MapFileName="$(IntDir)$(TargetFileName).map" SubSystem="1" OptimizeReferences="2" EnableCOMDATFolding="2" LinkTimeCodeGeneration="1" EntryPointSymbol="AmdAgesaDispatcher" BaseAddress="0" TargetMachine="1" FixedBaseAddress="1" ErrorReporting="0"/>
+			<Tool Name="VCALinkTool"/>
+			<Tool Name="VCManifestTool"/>
+			<Tool Name="VCXDCMakeTool"/>
+			<Tool Name="VCBscMakeTool" OutputFile="$(OutDir)$(ProjectName).bsc"/>
+			<Tool Name="VCFxCopTool"/>
+			<Tool Name="VCAppVerifierTool"/>
+			<Tool Name="VCWebDeploymentTool"/>
+			<Tool Name="VCPostBuildEventTool"/>
+			<Tool Name="VCLibrarianTool" OutputFile="$(OutDir)$(ProjectName).lib"/>
+		</Configuration>
+		<Configuration Name="Release|Win32" OutputDirectory="$(AGESA_OptsDir)$(ConfigurationName)\" IntermediateDirectory="$(AGESA_OptsDir)$(ConfigurationName)\$(ProjectName)\" ConfigurationType="4" DeleteExtensionsOnClean="*.obj;*.lib;*.tmp;*.dll;*.B1;*.BDI;$(IntDir)$(ProjectName)_BuildLog.htm" WholeProgramOptimization="0" BuildLogFile="$(IntDir)$(ProjectName)_BuildLog.htm">
+			<Tool Name="VCPreBuildEventTool"/>
+			<Tool Name="VCCustomBuildTool"/>
+			<Tool Name="MASM" IncludePaths=""/>
+			<Tool Name="VCXMLDataGeneratorTool"/>
+			<Tool Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool Name="VCMIDLTool"/>
+			<Tool Name="VCCLCompilerTool" AdditionalOptions="/Gs16384" AdditionalIncludeDirectories="&quot;$(AGESA_OptsDir)&quot;;&quot;$(AGESA_ROOT)&quot;;&quot;$(AGESA_ROOT)Include\&quot;;&quot;$(AGESA_ROOT)Proc\IDS\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Common\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieConfig\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Modules\GnbCommonLib\&quot;;&quot;$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieCommClkCfg\&quot;;" Optimization="1" FavorSizeOrSpeed="2" WholeProgramOptimization="true" IgnoreStandardIncludePath="false" BufferSecurityCheck="false" DisableLanguageExtensions="true" ObjectFile="$(IntDir)" ProgramDataBaseFileName="$(IntDir)$(ProjectName).pdb" XMLDocumentationFileName="$(IntDir)" WarningLevel="4" WarnAsError="true" Detect64BitPortabilityProblems="true" DebugInformationFormat="3" CompileAs="1"/>
+			<Tool Name="VCManagedResourceCompilerTool"/>
+			<Tool Name="VCResourceCompilerTool"/>
+			<Tool Name="VCPreLinkEventTool"/>
+			<Tool Name="VCLinkerTool" LinkLibraryDependencies="true" AdditionalOptions="/ALIGN:16   /ignore:4096,4108" AdditionalDependencies="$(NOINHERIT)" OutputFile="$(OutDir)$(ProjectName).dll" LinkIncremental="1" AdditionalLibraryDirectories="&quot;$(OutDir)$(ConfigurationName)\&quot;" GenerateManifest="false" ManifestFile="$(IntDir)$(TargetFileName).intermediate.manifest" IgnoreAllDefaultLibraries="true" GenerateDebugInformation="true" ProgramDatabaseFile="$(IntDir)$(TargetFileName).pdb" GenerateMapFile="true" MapFileName="$(IntDir)$(TargetFileName).map" SubSystem="1" OptimizeReferences="2" EnableCOMDATFolding="2" LinkTimeCodeGeneration="1" EntryPointSymbol="AmdAgesaDispatcher" BaseAddress="0" TargetMachine="1" FixedBaseAddress="1" ErrorReporting="0"/>
+			<Tool Name="VCALinkTool"/>
+			<Tool Name="VCManifestTool"/>
+			<Tool Name="VCXDCMakeTool"/>
+			<Tool Name="VCBscMakeTool" OutputFile="$(OutDir)$(ProjectName).bsc"/>
+			<Tool Name="VCFxCopTool"/>
+			<Tool Name="VCAppVerifierTool"/>
+			<Tool Name="VCWebDeploymentTool"/>
+			<Tool Name="VCPostBuildEventTool"/>
+			<Tool Name="VCLibrarianTool" OutputFile="$(OutDir)$(ProjectName).lib"/>
+		</Configuration>
+	</Configurations>
+	<References/>
+	<Files>
+		<Filter Name="Source Files" Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx" UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File RelativePath=".\PcieCommClkCfg.c"/>
+		</Filter>
+		<Filter Name="Header Files" Filter="h;hpp;hxx;hm;inl;inc;xsd" UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File RelativePath=".\PcieCommClkCfg.h"/>
+		</Filter>
+	</Files>
+	<Globals/>
+</VisualStudioProject>

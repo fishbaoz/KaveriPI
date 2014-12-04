@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Debug|Win32">
+			<Configuration>Debug</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|Win32">
+			<Configuration>Release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals" Condition="1==1">
+		<RootNamespace>AMD_Include_VS2010</RootNamespace>
+		<ProjectGuid>{D8B94913-A4FD-4AFD-BF70-B96AB3B09E6A}</ProjectGuid>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<ImportGroup Label="ExtensionSettings">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+	</ImportGroup>
+	<PropertyGroup Label="UserMacros" Condition="2==2"/>
+	<PropertyGroup Condition="3==3">
+		<_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+	</PropertyGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)Include\";"$(AGESA_ROOT)Proc\IDS\";"$(AGESA_ROOT)Proc\CPU\";"$(AGESA_ROOT)Proc\CPU\Family\";"$(AGESA_ROOT)Proc\Common\";"$(AGESA_ROOT)Proc\CPU\Feature\";"$(AGESA_ROOT)Proc\Topology\";"$(AGESA_ROOT)Proc\Mem\";"$(AGESA_ROOT)Proc\IDS\Debug\";"$(AGESA_ROOT)Proc\Recovery\Mem\";"$(AGESA_ROOT)Proc\GNB\Common\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitTN\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitKV\";"$(AGESA_ROOT)";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)Include\";"$(AGESA_ROOT)Proc\IDS\";"$(AGESA_ROOT)Proc\CPU\";"$(AGESA_ROOT)Proc\CPU\Family\";"$(AGESA_ROOT)Proc\Common\";"$(AGESA_ROOT)Proc\CPU\Feature\";"$(AGESA_ROOT)Proc\Topology\";"$(AGESA_ROOT)Proc\Mem\";"$(AGESA_ROOT)Proc\IDS\Debug\";"$(AGESA_ROOT)Proc\Recovery\Mem\";"$(AGESA_ROOT)Proc\GNB\Common\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitTN\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitKV\";"$(AGESA_ROOT)";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemGroup Label="Sources">
+		<ClInclude Include=".\AdvancedApi.h"/>
+		<ClInclude Include=".\CommonReturns.h"/>
+		<ClInclude Include=".\Filecode.h"/>
+		<ClInclude Include=".\GeneralServices.h"/>
+		<ClInclude Include=".\GnbInterface.h"/>
+		<ClInclude Include=".\GnbPage.h"/>
+		<ClInclude Include=".\Ids.h"/>
+		<ClInclude Include=".\IdsPerf.h"/>
+		<ClInclude Include=".\KaveriFm2r2Install.h"/>
+		<ClInclude Include=".\KaveriFp3Install.h"/>
+		<ClInclude Include=".\OptionApmInstall.h"/>
+		<ClInclude Include=".\OptionC6Install.h"/>
+		<ClInclude Include=".\OptionCC6ExitControlInstall.h"/>
+		<ClInclude Include=".\OptionCdit.h"/>
+		<ClInclude Include=".\OptionCditInstall.h"/>
+		<ClInclude Include=".\OptionCpbInstall.h"/>
+		<ClInclude Include=".\OptionCpuCacheFlushOnHaltInstall.h"/>
+		<ClInclude Include=".\OptionCpuCoreLevelingInstall.h"/>
+		<ClInclude Include=".\OptionCpuFamiliesInstall.h"/>
+		<ClInclude Include=".\OptionCpuFeaturesInstall.h"/>
+		<ClInclude Include=".\OptionCpuSpecificServicesInstall.h"/>
+		<ClInclude Include=".\OptionCpuSpecificServicesInstallReset.h"/>
+		<ClInclude Include=".\OptionCrat.h"/>
+		<ClInclude Include=".\OptionCratInstall.h"/>
+		<ClInclude Include=".\OptionDmi.h"/>
+		<ClInclude Include=".\OptionDmiInstall.h"/>
+		<ClInclude Include=".\OptionFamily15hEarlySample.h"/>
+		<ClInclude Include=".\OptionFamily15hInstall.h"/>
+		<ClInclude Include=".\OptionFchInstall.h"/>
+		<ClInclude Include=".\OptionGfxRecovery.h"/>
+		<ClInclude Include=".\OptionGfxRecoveryInstall.h"/>
+		<ClInclude Include=".\OptionGnb.h"/>
+		<ClInclude Include=".\OptionGnbInstall.h"/>
+		<ClInclude Include=".\OptionHtcInstall.h"/>
+		<ClInclude Include=".\OptionIdsInstall.h"/>
+		<ClInclude Include=".\OptionIoCstateInstall.h"/>
+		<ClInclude Include=".\OptionLowPwrPstateInstall.h"/>
+		<ClInclude Include=".\OptionMemory.h"/>
+		<ClInclude Include=".\OptionMemoryInstall.h"/>
+		<ClInclude Include=".\OptionMemoryRecovery.h"/>
+		<ClInclude Include=".\OptionMemoryRecoveryInstall.h"/>
+		<ClInclude Include=".\OptionMmioMapInstall.h"/>
+		<ClInclude Include=".\OptionMultiSocket.h"/>
+		<ClInclude Include=".\OptionMultiSocketInstall.h"/>
+		<ClInclude Include=".\OptionPrefetchModeInstall.h"/>
+		<ClInclude Include=".\OptionPsiInstall.h"/>
+		<ClInclude Include=".\OptionPstate.h"/>
+		<ClInclude Include=".\OptionPstateInstall.h"/>
+		<ClInclude Include=".\Options.h"/>
+		<ClInclude Include=".\OptionS3ScriptInstall.h"/>
+		<ClInclude Include=".\OptionScsInstall.h"/>
+		<ClInclude Include=".\OptionSlit.h"/>
+		<ClInclude Include=".\OptionSlitInstall.h"/>
+		<ClInclude Include=".\OptionsPage.h"/>
+		<ClInclude Include=".\OptionSrat.h"/>
+		<ClInclude Include=".\OptionSratInstall.h"/>
+		<ClInclude Include=".\OptionsTopology.h"/>
+		<ClInclude Include=".\OptionTopologyInstall.h"/>
+		<ClInclude Include=".\OptionWhea.h"/>
+		<ClInclude Include=".\OptionWheaInstall.h"/>
+		<ClInclude Include=".\PlatformInstall.h"/>
+		<ClInclude Include=".\PlatformMemoryConfiguration.h"/>
+		<ClInclude Include=".\RichlandFm2Install.h"/>
+		<ClInclude Include=".\RichlandFp2Install.h"/>
+		<ClInclude Include=".\RichlandFs1r2Install.h"/>
+		<ClInclude Include=".\Topology.h"/>
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+	<ImportGroup Label="ExtensionTargets">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+	</ImportGroup>
+</Project>

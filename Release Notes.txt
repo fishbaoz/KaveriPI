@@ -1,0 +1,1566 @@
+
+                        Release Notes for
+                        -----------------
+             Kaveri Platform Initialization (KaveriPI)
+
+
+*****************************************************************************
+Note * Alpha versions of /AGESA/UefiUdk and /CPMUDK source folder and EDK II
+       Platform BIOS images: RELxxxxx.rom (Fp3) and RETxxxxx.rom (Fm2r2), have
+       been added in the PI package to facilitate EDK II development for future
+       program(s).
+*****************************************************************************
+
+=============================================================================
+
+Version:  1.1.0.5                             Release Date: May 2014
+File:     KaveriPI_1.1.0.5.ZIP
+
+NOTE: This Release supports both of Kaveri FP3 and Kaveri FM2R2.
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v3.02 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.20              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 1.1.0.5 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v030.2 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v102
+                 - AMD Generic GOP driver v1.54
+    PlatformBIOS - Ballina platform BIOS RBL1105B (Fp3)
+                 - Bantry platform BIOS RBT1105B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+    Specification - AGESA Arch2008 Interface specification v2.20
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.42.25
+                 - BIOSTestSuite 8.0.10.1753
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 1.1.0.4:
+
+  - BUG443092: Check BIOS source file's Copyright release date failed
+  - ENH443877: SMU Firmware Release 13.46.0
+  - ENH443253: Core voltage offset trim workaround
+  - ENH442877: Need platform-specific default for PCIe refclk SS percentage
+
+
+
+=============================================================================
+
+Version:  1.1.0.4                             Release Date: Apr 2014
+File:     KaveriPI_1.1.0.4.ZIP
+
+NOTE: This Release supports both of Kaveri FP3 and Kaveri FM2R2.
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v3.02 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.20              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 1.1.0.4 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v030.2 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v102
+                 - AMD Generic GOP driver v1.54
+    PlatformBIOS - Ballina platform BIOS RBL1104B (Fp3)
+                 - Bantry platform BIOS RBT1104B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+    Specification - AGESA Arch2008 Interface specification v2.20
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.42.25
+                 - BIOSTestSuite 8.0.10.1753
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 1.1.0.3:
+
+  - ENH442451: GNB mask VCE to DPM2 for low-power OPNs
+  - ENH442580: SMU Firmware Release 13.43.0
+  - BUG441102: Add SMBIOS support for FX branded APUs
+  - ENH441398: RESET SMBUS controller instead of KILL when contention happens
+
+
+
+=============================================================================
+
+Version:  1.1.0.3                             Release Date: Mar 2014
+File:     KaveriPI_1.1.0.3.ZIP
+
+NOTE: This Release supports both of Kaveri FP3 and Kaveri FM2R2.
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v3.02 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.20              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 1.1.0.3 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v030.1 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v102
+                 - AMD Generic GOP driver v1.54
+    PlatformBIOS - Ballina platform BIOS RBL1103B (Fp3)
+                 - Bantry platform BIOS RBT1103B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+    Specification - AGESA Arch2008 Interface specification v2.20
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1749
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 1.1.0.2:
+
+  - BUG438610: MEM_ERROR_NO_DIMM_FOUND_ON_SYSTEM is not recorded if no DRAMs plugged in system
+  - BUG439256: New brandstrings not recognized by SMBIOS
+  - ENH439842: SMU Firmware Release 13.40.0
+
+
+
+=============================================================================
+
+Version:  1.1.0.2                             Release Date: Mar 2014
+File:     KaveriPI_1.1.0.2.ZIP
+
+NOTE: This Release supports both of Kaveri FP3 and Kaveri FM2R2.
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v3.01 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.20              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 1.1.0.2 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v030 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v102
+                 - AMD Generic GOP driver v1.54
+    PlatformBIOS - Ballina platform BIOS RBL1102A (Fp3)
+                 - Bantry platform BIOS RBT1102A (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL1102A.rom* (Fp3) and RET1102A.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.20
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1748
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 1.1.0.1:
+
+  - ENH436605: SMU Firmware Release 13.38.0
+  - ENH436593: Update L2 Resizing Settings for KV in BIOS
+  - ENH436063: Replace all 2.0Ghz CCLK Pstate with 1.9Ghz CCLK
+
+
+=============================================================================
+
+Version:  1.1.0.1                             Release Date: Feb 2014
+File:     KaveriPI_1.1.0.1.ZIP
+
+NOTE: This Release supports both of Kaveri FP3 and Kaveri FM2R2.
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v3.00 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.20              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 1.1.0.1 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v030 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v102
+                 - AMD Generic GOP driver v1.54
+    PlatformBIOS - Ballina platform BIOS RBL1101C (Fp3)
+                 - Bantry platform BIOS RBT1101C (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL1101C.rom* (Fp3) and RET1101C.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.20
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1747
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 1.1.0.0:
+
+  - ENH435365: Force SVI2 speed to 3.4M on both desktop and mobile platform
+  - BUG427334: CPU Current limiting causes system to not boot
+  - ENH435699: Change Default Upstream TX Preset to be P2
+  - ENH425325: Gen3 Equalization Back up Preset Search
+  - ENH435871: SMU Firmware Release 13.36.0
+  - ENH435360: Update Brand Strings for BIOS override for NB and DT Kaveri APUs
+  - BUG434640: D18F3x40 may be cleared unexpectedly
+  - ENH430917: Disable PCIe PHY RX power gating for Gen3 hotpluggable ports
+  - ENH434745: Implement Brand Name String override for initial launch products
+  - ENH433544: KV platform power policy default change
+  - ENH433708: Update PMU to revision 47e9
+  - BUG433606: Gen3 PHY settings not set when PSPP = Balanced Low
+  - BUG418184: Detailed DRAM error data is not being returned in multi-bit error condition
+  - BUG433181: For Asymmetric Config on DCTs, Framebuffer does not fall on interleaved region
+  - ENH433454: Set "SataClkAutoOff" to "enable" with default
+  - BUG431554: No video after resume from S3 with External Graphics setting
+  - BUG432394: Disabling audio controller does not completely disable config space
+  - ENH432731: Move display panel power-up later in POST
+  - ENH431848: KV GMC memory hole programming update
+  - ENH431556: KV CPU: 3.00 BKDG updates
+  - ENH429614: OSCOUT1_CLK_sel and serial IRQ mode
+  - ENH426022: Enabled FB in interleave region when memory is mismatched
+
+
+=============================================================================
+
+Version:  1.1.0.0                             Release Date: Jan 2014
+File:     KaveriPI_1.1.0.0.ZIP
+
+NOTE: This Release supports both of Kaveri FP3 and Kaveri FM2R2.
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v3.00 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.20              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 1.1.0.0 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v027 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v101
+                 - AMD Generic GOP driver v1.54
+    PlatformBIOS - Ballina platform BIOS RBL1100C (Fp3)
+                 - Bantry platform BIOS RBT1100C (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL1100C.rom* (Fp3) and RET1100C.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.20
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1740
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 1.0.8.0:
+
+  - ENH431381: Kaveri_Firmware_13_30_0
+  - ENH426796: Enhancements for AMP 2400 settings to support another dram vendor Hynix
+  - ENH426806: PMU to support Read-Modify-Write for F2x9C_x00 [F,8:0]1_[F,B:0]04A_dct[3:0]
+  - ENH428498: 1.13 BKDG updates.
+  - BUG427856: Integrated Info Table TDP values are not correct
+  - ENH427987: NB Machine Check Control Mask need to be set when NB PG is enabled.
+  - ENH426490: Add PCIe flow control credit programmability to RL CMOS options
+  - ENH426343: Add PCIe flow control credit programmability to KV CMOS options
+  - BUG427192: F15TnRegisterTablesAfterApLaunch table is not programmed for TN/RL
+  - BUG409150: SMBIOS information show incorrect.
+  - BUG426026: Mismatched header file name
+  - BUG426965: When Power off PLLs are set to disabled SUT will stop POST at D3E7
+  - ENH427012: AGESA FCH support DISP2_CLK option for Kaveri
+  - ENH425521: Can't disable "Unused SATA Port Auto Shut Down" feature.
+
+
+=============================================================================
+
+Version:  1.0.8.0                             Release Date: Dec 2013
+File:     KaveriPI_1.0.8.0.ZIP
+
+NOTE: This Release supports both of Kaveri FP3 and Kaveri FM2R2.
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.12 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.12              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 1.0.8.0 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v025 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v024
+                 - AMD Generic GOP driver v1.53
+    PlatformBIOS - Ballina platform BIOS RBL1080B (Fp3)
+                 - Bantry platform BIOS RBT1080B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL1080B.rom* (Fp3) and RET1080B.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.12
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1735
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.8.2:
+
+  - BUG425988: PPD core lane 0 is ungated
+  - BUG416513: Setting CPU Current Limit Control causes DEAD POST
+  - ENH424783: Disable UNB power gating on KV FM2
+  - BUG424796: Hang during POST when GFX(PGD)Wrapper and GPP(PPD)Wrapper are disabled
+  - ENH423903: Defer setting of EnCstateBoostBlockCC6Exit to later in boot sequence
+  - ENH424783: Disable UNB power gating on KV FM2
+  - ENH424667: KV SMU FW release 13.26.1
+  - ENH424067: Add Cpu Type 4 designators for Kv FM2r2
+  - ENH418068: Disable GFX (PGD) Wrapper, GPP (PPD) Wrapper cause system fails to post
+  - ENH423912: Add KV 1 DPC DDR-2400 "AMP" support
+  - ENH423624: Remove P_ELEC_IDLE_MODE workaround in PPD wrapper
+  - BUG424464: GMM address defined incorrectly
+  - ENH423579: Program BME and LINK_DIS for dGPU PX powerdown
+  - BUG422082: C Style Issues in Memory files
+  - ENH421743: Update PMU to 2909 - Make 2D training more reliable across parts
+  - ENH422727: Disable HTC during memory training
+  - ENH421372: Power-gate PMU SRAM on disabled Channels (saves 50mW leakage per channel)
+  - ENH421735: Apply additional ptr separation on KV for NCLK800/DDR1333
+  - ENH421729: New KV microcode patches 06003104/0600301C
+  - ENH421148: Require DMIF_PG:DPG_PIPE_NB_PSTATE_CHANGE_CONTROL programmed for all pipes
+  - BUG421433: Memory: BTS S3 test failure
+  - ENH421956: GMC Programming updates to avoid agressive stutter
+  - ENH404706: BIOS AGESA GNB Optimization
+
+
+
+=============================================================================
+
+Version:  0.0.8.2                             Release Date: Oct 2013
+File:     KaveriPI_0.0.8.2.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.11 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.11              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.8.2 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v023 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v024
+                 - AMD Generic GOP driver v1.52
+    PlatformBIOS - Ballina platform BIOS RBL0082B (Fp3)
+                 - Bantry platform BIOS RBT0082B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL0082B.rom* (Fp3) and RET0082B.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.11
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1727
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.8.1:
+
+  - BUG416813/BUG421313: Add OEM hook for PCIE CLKREQ# feature
+  - ENH421308: Enable workaround for Erratum - 792
+  - BUG421726: SMU Bios Table not restored on S3 resume
+  - ENH414432: MEM: Remove irrelevant programs from Kaveri trunk
+  - BUG420591: ALIB: skip link training on hot unplug
+  - ENH421160: DLLreset=1 during PMU training
+  - BUG419281: Missing SVN property in MemSmmLib files
+  - BUG420821: Prototype issues in FCH code
+  - BUG421131: For Server, need to restore AMD_UEFI_Smm_MemSmmLib to Kaveri trunk.
+  - BUG420617: Incorrect programming of MC_ARB_HARSH_CTL_RD/WRT
+  - BUG420821: Prototype issues in FCH code
+  - ENH420812: Include cTDP parameter for usage by VBIOS
+  - ENH414431: Remove irrelevant programs from Kaveri trunk
+  - ENH418173: Changes to APM enable flow
+  - ENH414433: Remove irrelevant programs from Kaveri trunk
+  - BUG420095: Issues in FchSetUsbEnableReg.
+  - ENH419887: Update L2 Resizing Settings for KV in BIOS
+  - ENH414429: Remove irrelevant programs from Kaveri trunk
+  - ENH419683: Set P_ELEC_IDLE_MODE in wrapper to 0x3
+  - ENH419901: Need to remove EnCstateBoostBlockCC6Exit = 1
+  - ENH419896: KV SMU FW release 13.23.0
+  - ENH419137: Add additional ptr separation for slow (800M NCLK) OPNs
+  - ENH419303: Update PMU ver 27C9-RC
+  - BUG419708: Include AGESA input parameter in cTDP init
+  - ENH416813: Add OEM hook for PCIE CLKREQ# feature
+  - ENH419345: AGESA FCH support Bolton D2 chip for KV project.
+  - BUG418623: Incorrect programming on D18F3xE8
+  - ENH414434: Remove irrelevant programs from Kaveri trunk
+  - BUG417894: S3 Power Saving issue
+  - ENH418072: KV CPU: 1.09 BKDG updates.
+  - BUG401676: KV-FCH:Incorrect/Missing Doxygen headers in FCH UDK files
+  - BUG418018: IOMMUx18 [11] was not restored on S3 resume
+  - BUG417915: Definations of SD_MODE in AGESA.h and agesa.inc are inconsistent
+  - ENH417388:  APU driven Vref should not be enable if channel is unpopulated
+  - ENH417180:  [KV] Power down DISP2_CLK and PCIE_RCLK_Output for power savings
+  - ENH415002: Verify ECC capability before enabling memory ECC feature
+  - ENH417553: CPU: 1.08 BKDG updates
+  - ENH417186: Disable both periodic and re-direct DRAM scrubbing
+  - BUG413180: Issue with RAS for second DCT in KV
+
+
+
+=============================================================================
+
+Version:  0.0.8.1                             Release Date: Sep 2013
+File:     KaveriPI_0.0.8.1.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.08 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.11              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.8.1 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v022 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v022
+                 - AMD Generic GOP driver v1.52
+    PlatformBIOS - Ballina platform BIOS RBL0081C (Fp3)
+                 - Bantry platform BIOS RBT0081C (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL0081C.rom* (Fp3) and RET0081C.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.11
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1717
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.8.0:
+
+  - ENH408876: BIOS AGESA Mem Optimization during S3 Resume
+  - ENH416945: KV SMU FW release 13.20.0
+  - ENH413781: Updated Microsoft Requirements for Memory Carve Out
+  - ENH410604: Change default PCIe Gen3 equalization search mode to exhaustive search
+  - ENH416535: Add a text string in HDTOUT
+  - ENH415881: Update L2 dynamic resizing thresholds in BIOS
+  - ENH412436: Add AMP support
+  - BUG416063: ALIB phy gating status incorrect
+  - ENH415693: BIOS not programming correct number of DIMMs to the SMU
+  - ENH387775: Exclude Chipselects that fail PMU training
+  - BUG415097: Video corruption when NBP3 enabled with the BIOS from trunk
+  - ENH415660: Update C-State settings for Cache flush on halt timer and success
+               monitor
+  - BUG413083: CPU Current Limit not functioning
+  - BUG415429: ALIB: incorrect address for Sb enable/disable
+  - BUG413397: Incorrect values for F5x16[4, 8, C] bit 0
+  - ENH414693: Update KV MRL Fudge factor to include three additional UI
+               RdPtrInit uncertainty
+  - ENH414710: RdPtrInitVal =14h for latency improvements
+  - ENH414684: Release new PMU version 2348
+  - ENH414501: Set GMC NOOFCOLS to a 1
+  - ENH403993: KV dram phy power savings
+  - ENH408860: Enable APU powergating for KV PCIe PHY
+  - ENH413196: Enable Memory power saving for SD
+  - ENH412774: Update KV UDIMM max speed support
+  - ENH411276: 1.06 BKDG updates for CSampleTimer
+  - ENH412719: Disable DFS bypass on A0
+  - BUG401654: Possible infinite loop in memory code
+  - BUG412633: Kaveri build error
+  - BUG409725: Fails Cross Link Capability in 2x8 Configuration
+  - ENH412033: Adding PCIE speed limit with 0.95V VDDP OPN
+  - ENH411580: set F5x88[EnCstateBoostBlockCC6Exit] = 1
+  - ENH411591: GNB: Earlier Panel Turn on
+
+
+
+=============================================================================
+
+Version:  0.0.8.0                             Release Date: Aug 2013
+File:     KaveriPI_0.0.8.0.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.06 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.11              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.8.0 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v019 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v020
+                 - AMD Generic GOP driver v1.52
+    PlatformBIOS - Ballina platform BIOS RBL0080B (Fp3)
+                 - Bantry platform BIOS RBT0080B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL0080B.rom* (Fp3) and RET0080B.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.11
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1709
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.6.3:
+
+  - ENH411815: KV A1 NbSyncPtrAdj NbSyncPtrAdjLo change setting request
+  - ENH411752: KV SMU FW release 13.17.0
+  - BUG411566: KV reports an issue that MR1 of mp1 at PMU SRAM 41:40h is incorrect
+  - BUG407090: AC/DC Switch Control enabled bit not set correctly.
+  - ENH406697: Workaround for Infiniiband network card for Gen3 training
+  - BUG410939: BIOS hangs on DVI clock source selection
+  - BUG410271: MEM: registers are not saved for S3
+  - ENH402998: GNB: Populate clock input spread level
+  - ENH408849: The proper programming sequence for SMBUS0 controller & OBS384763
+  - ENH410602: Separating Eclk from PerformancePowerPlayFlag
+  - ENH409285: TableEntry engine should be family special service
+  - BUG409828: Memory: AGESA should program EQEnable and DrvPwrGateEn
+  - ENH410513: Please remove the programming to bit0 in register of PGD_BIF_PCIE_HW_DEBUG on KV
+  - ENH405836: Add support for DFS Bypass feature
+  - ENH396921: Add DXE & SMM RAS support for Kaveri
+  - BUG409810: Memory code do not match BKDG 1.05 recommended value
+  - BUG410227: GNB: Hotplug does not gate/ungate lanes correctly
+  - BUG409647: VrefDnom was not restored on S3 resume
+  - BUG409075: BIOS incorrectly program the LVT offset for IBS and Error Thresholding
+  - ENH409410: GNB: update ALIB gen2/3 flags
+  - ENH406694: Add Upstream/Downstream RX/TX Preset options
+  - BUG409178: Dangling pointer cause POST hang
+
+3. Notes
+  - KV SMU FW release 13.16.0
+  - Added: index [12], (Bring-up) KV FP3 17W
+  - Added: index [11], SCS imported from Excel
+  - Added: index [3], (Bring-up) KV FM2r2 45W
+
+=============================================================================
+
+Version:  0.0.6.3                             Release Date: July 2013
+File:     KaveriPI_0.0.6.3.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.05 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.11              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.6.3 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v018 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v019
+                 - AMD Generic GOP driver v1.50
+    PlatformBIOS - Ballina platform BIOS RBL0063B (Fp3)
+                 - Bantry platform BIOS RBT0063B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - Alpha EDKII BIOS REL0063B.rom* (Fp3) and RET0063B.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.11
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1701
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.6.2:
+
+- ENH409022: KV SMU FW release 13.15
+- ENH408809: AGESA hard code CSampleTimer to 2
+- BUG408870: Program SMU BIOS table before enabling services
+- ENH403456: Remove unnecessary @todo in MEM files
+- BUG404062: MemFTurnOnAggressorChannels function causes a compile error
+- ENH407824: CPU: 1.04 BKDG updates
+- ENH403459: Remove unnecessary @todo in Recovery\mem files
+- ENH408032: KV SMU Firmware 13.14.0
+- ENH405705: Windows XP Support
+- ENH407232: Set PCIe Gen3 voltage based on fuse
+- ENH407863: PCIe: RX loopback Failure with High IR Corner Parts
+- ENH407214: BAPM Enablement for A0 EVT and A1
+- BUG407211: PCIe Debug Bus Clock should be DISABLED
+- ENH406685: KV SMU FW release 13.13.0
+- ENH406004: New KV-A0 and KV-A1 patches
+- ENH405709: KV stretcher enable workaround removal for A1 silicon
+- ENH403865: KV ECO470302 and 470304
+- ENH406104: Implement IDS for Enhanced Current Tracking
+- ENH406103: Implement IDS for Controlled HTC
+- ENH403184: KV A1 ECO 463190 CPUID change
+- ENH405979: Adjust the frequency where the NbsynPtrAdjPstate[2:0] threshold is placed
+- ENH405994: Add code to AMD_RESET_ENABLEMENT to set CpuErrDis on Family 15h
+- ENH405243: Update VOLATILE in UefiUdk files to use volatile instead
+- ENH405235: Disable telemetry on KV and KV combo BIOS which also support RL
+- ENH405602: KV to remove out-of-date Addendum code
+- ENH405452: Enable/Disable Power Estimator with BAPM
+- ENH405423: KV MaxRdLat update
+- ENH405421: KV SMU FW Release 13.12.0
+- BUG404669: GNB code do not match BKDG 1.03 recommended value
+- BUG404538: Memory Register was not resored on S3 resume
+- BUG405042: Unused variable in GNB code
+- BUG405055: In RTC DTS WA, the DayLightSavingEnable bit in RegxB should be bit0
+- ENH403457: Remove unnecessary @todo in MEM files
+- ENH404548: Remove AGESA Hard coded value - ENH392804
+- ENH403153: Add SETUP option for INTGFX IOMMUv1 Disabled
+- BUG404587: Incorrect values used in CRAT TLB entries
+- ENH404055: BIOS recommendation for TopologyExtensions
+- BUG403996: AGESA.h out of sync with .inc file
+- ENH389584: Implement CRAT entries for iGPU
+- BUG404012: DXE DRAM Error Translation does not return the proper return code
+- BUG404011: SMM DRAM Address Translation not returning the proper DIMM #
+
+
+
+=============================================================================
+
+Version:  0.0.6.2                             Release Date: June 2013
+File:     KaveriPI_0.0.6.2.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.03 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.11              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.6.2 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.2
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module v017 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v019
+                 - AMD Generic GOP driver v1.49
+    PlatformBIOS - Ballina platform BIOS RBL0062C (Fp3)
+                 - Bantry platform BIOS RBT0062C (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+                 - EDKII BIOS REL0062C.rom* (Fp3) and RET0062C.rom* (Fm2r2)
+    Specification - AGESA Arch2008 Interface specification v2.11
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1688
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.6.1:
+
+- ENH404547: Disable BAPM and power estimator by default on KV BIOS release before EVT
+- ENH403872: KV SMU FW Release 13.11.0
+- ENH402805: Update IOMMU programming for Phantom Function
+- ENH402386: Set IOMMU ISOC bit
+- ENH402259: IOMMU RPR Update
+- ENH403853: Update Hudson 2/3 IMC firmware to version 1.1.2
+- ENH402392/ENH402394: Disable Day light Saving time setting
+- ENH401675: Enable ABM support for mobile platform
+- ENH403629: KV microcode patch 06003018v4
+- ENH402844: Branch fusion disabled
+- ENH403618: SMU fw 13.10.3
+- ENH403478: Remove ALIB initialization messages
+- ENH398474: Optimize KV MaxRdLatency for Nbp0 by 2 NCLKs
+- ENH401330: PMU 1672 revision
+- ENH401652: Enable Phy calibration for S3 code path
+- BUG400716: Incorect family equate used in PCI table
+- BUG400987: Update platform type in Addendum file
+- ENH395089: Update ASPM Max Latency Implementation
+- ENH402423: Disable wait for PIF ack of TxPhyCmd change from 0->1 when in Recovery Speed
+- ENH401844: Disable Abyte receivers used in loopback mode to save VDDIO power
+- ENH402876: KV SMU FW Release 13.10.0
+- BUG401359: Incorrect variable size used in GNB code
+- ENH401640: Place PMU in reset+stall and turn off SRAM
+- BUG399499: Repeated GUIDs in UDK build files
+- BUG401163: Disable setting for Precharge Power Down in BIOS does not work
+- ENH401836: ECC Exclusion
+- ENH400210: Combo BIOS build config for KV and TN
+- ENH401651: Enable Phy calibration for S5 code path
+- ENH401362: Implement EAPM enable/disable
+- ENH401866: Set Default_Steering to 1 when ECC is enabled
+- ENH401848: Enable Alink / Blink clock gating for power saving
+- ENH401868: KV microcode patch 06003010
+- BUG400679: IOAPIC Feature Control Register was not resored on S3 resume
+- ENH401864: KV SMU FW Release 13.9.0
+- ENH401650: KV DQS matching ODT/drive Strength
+- ENH401371: PMU 0x14b1
+- ENH399784: Set Gen3 PI Override Enable in "Auto"
+- ENH400799: Include NBDPM in system info table for driver
+- ENH401493: No longer necessary to program LCLK DEEP SLEEP CNTL registers
+- BUG400541: DIMM Address Translation not functional in AGESA DXE Misc. Services protocol
+- ENH401349: Enable LCLK Deep Sleep by default
+- BUG401341: Incorrectly use DctCfgBcEn when loading PMU images
+- ENH400723: Set Vga16En for internal graphics
+- ENH401016: Enable the 2D image
+- BUG400323: AGESA should clear D0F0xE4_x0122_000B [MargPktSbiEn] and [PcieModeSbiEn]
+- BUG400387: Windows fail to boot when ECC enabled
+- ENH400719: SMU needs enablement mask bits set by default
+- ENH400775: Add FchPeiAux driver in UDK Fch packages
+- BUG400228: Stutter-Only mode enables GMC power gating
+- ENH400401: Remove HPC CPU feature
+- BUG400441: KV incorrectly clear SMI status in SMMControl driver
+- BUG399693: PeiService not corrected set for SmBus1 ppi in UDK
+- ENH399481: Use memory mapped register to determine Vbios loaded
+- ENH400191: Fix for SRQ deadlock condition
+- ENH399792: Change PCIe Power Gating build default to Enabled
+- ENH400202: KV SMU FW Release 13.8.0
+- ENH399625: Update memory clock values for SMU
+- BUG399999: SMBIOS Type 4 Processor Upgrade incorrect
+- ENH395183: Update microcode to enable LAPIC Timer on KV
+- ENH396934: Implement common clock configuration
+- BUG399809: System not boot with ECC DIMMs on Fm2
+- ENH348685: Implement TLB table for CRAT
+- BUG398456: IOMMU IVHD extended feature report error
+- ENH399695: Remove TN constraint in chip select interleaving for KV
+- ENH399198: Enable load card feature
+- BUG397881: Remove unnecessary @todo in CPU files
+- BUG399647: FCH KBD Mouse malfunction
+- ENH398293: Enable/disable NBDPM
+
+
+4.  Known Issues & Limitations
+
+
+
+=============================================================================
+
+Version:  0.0.6.1                             Release Date: May 2013
+File:     KaveriPI_0.0.6.1.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.03 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.10              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.6.1 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.1
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module 0.0.6.1 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v018
+                 - AMD Generic GOP driver v1.48
+    PlatformBIOS - Ballina platform BIOS RBL0061B (Fp3)
+                 - Bantry platform BIOS RBT0061B (Fm2r2)
+                 - KaveriFp3Options.c
+                 - KaveriFm2r2Options.c
+    Specification - AGESA Arch2008 Interface specification v2.10
+                  - Doxygen output file arch2008.pdf
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.10.1663
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.6.0:
+
+- ENH399487: FCH RTC BIOS workaround with the build switch defaulted on
+- ENH399287: SMU FW release 13.7.0
+- ENH399300: FCH RTC Workaround.
+- ENH399025: CHUB SCLK Clock Gating "SCLK/NCLK GMC Gating" Enablement
+- ENH399023: Enable Stutter Mode and GMC Power Gating in CMOS Options
+- ENH398294: Implement BIOS Code to Support Clock Stretcher
+- ENH399278: PLL Wait Time extend to 4B for both packages
+- ENH399035: Integrate CC6 uCode Patch 300B
+- ENH392424: Adding support to support two level of VDDR/VDDP on some mobile OPN
+- ENH396777: Add discrete ECC-train indication to KV PMU SRAM block for PMU
+- ENH398102: PMU version 1210
+- ENH398462: New PLLwaittime for FP3: 0x50
+- ENH384775: Update KV ALIB to support mobile features
+- ENH398407: Change Parameters to support Link Width change
+- ENH398479: Change PCIe Power Gating build default to Disabled
+- BUG394759: No boot when changing CPUID Model or Stepping
+- BUG396920: Remove references to obsolete code
+- BUG397479: Possible infinite loop in FCH routine
+- BUG397887: Remove unnecessary @todo in GNB files
+- ENH393194: Change PLL/RX/TX powerdown settings
+- ENH398104: PllWaitTime (0x20093) = 0x23
+- ENH383833: Pcie Power gate init support for Kaveri
+- ENH397485: Disable IOMMU Prefetch
+- BUG384060: Conflict in GNB build options in combo BIOS
+- ENH398108: Add conservative watermarks to BIOS so that NB P-States can be enabled early
+- ENH398268: SMU FW 13.6.0
+- BUG396512: Doxygen warning in CPU file
+- ENH396935: Implement ASPM Optionality PCIe ECN 2.1
+- ENH397702: RdPtrInitVal to be set to 10h to reduce latencies
+- BUG397512: S3 resume fail with DIMM B1 populated
+- ENH395064: Implement a family exclusion scheme for CAR init
+- ENH397697: Workaround for issue with NB transitions, Disable PLL Regulator Power Down
+- ENH397361: Add M1StateEn Bitmap to KV SMB
+- ENH396519: Set LC_ELEC_IDLE_MODE for Gen1 loopback
+- ENH397537: Build files out of sync
+- BUG397479: Possible infinite loop in FCH routine
+- BUG397616: Pplay table may have too many DPM states
+- ENH391924: Add Agesa interface for customers to change GPU frequency
+- BUG396038: Unreachable code in PcieAlibBuildAcpiTableV2
+- ENH397597: AGESA FCH sync EDK file UDK file.
+- BUG396906: Unused variable in GNB routine
+- ENH397568: For KV performance set DisSrqPickNcReqThrtl
+- ENH397570: F3x088[DisDramScrub] = 1
+- ENH397483: Workaround for C341 and disable mstate
+- ENH397226: Set DYN_LANE_PWR_STATE = 2 for Gen3 ports
+- ENH396922: Facilitate DRAM Error Translation routine to run as a library in SMM
+- BUG397230: ulNbPstateMemclkFreq is not populated correctly
+- BUG397266: STRAP_LANE_NEGOTIATION set incorrectly
+- ENH374476: New VDDR BLDCFG parameter
+- BUG396775: Incorrect save/restore hardware broadcast registers
+- ENH397251: Remove unneeded code.
+- ENH397220: 1.03 BKDG updates.
+- BUG396919: IDS assert failure in function GfxCalculateClockKV
+- ENH386205: Facilitate DRAM Error Translation routine to run as a library in DXE and SMM
+- BUG396796: Minor coding issues in library files
+- ENH394774: DDR PHY Characterization Parameters
+- BUG396579: Assert when writing Vref DAC
+- BUG396747: Low power receiver settings, when enabled, did not set the bit correctly
+- ENH396748: F2/reg 94/bit15 PowerDownEn should be set for each active DCT
+- ENH395309: Limit audio endpoint count to 4
+- ENH396046: Turn on L2 Upsizing in Kaveri
+- ENH396294: Configure default vref dac code for KV M1 operation
+- ENH396063: BIOS should disable MR0[8] (DLLReset] for switching between Memory PStates
+- ENH396298: KV SMU FW release 13.5.0
+- ENH396282: System Reset occurs during S3 resume (memory instability)
+- ENH395499: New recommendation for KV channel PG (F2x78[DccPgSsBusDis])
+- ENH390344: Add register table processing at multiple points in time via pointer
+- BUG395462: Memory code do not match BKDG 1.02 recommended value
+- ENH396045: PMU code 102d
+- BUG396290: Extended Replay Timer set incorrectly
+- BUG396276: Disable watchdog timer
+- ENH396281: Enable PCIe Wrapper power management features
+- BUG395459: GNB code do not match BKDG 1.02 recommended value
+- ENH394712: Populate ACP section of PP tables
+- BUG396058: GNB NULL reference
+- ENH393674: Enable fix for control transfer error.
+- BUG395061: Cannot reduce to 1 core in BIOS
+- ENH395891: Remove DataSramble from Trunk
+- ENH394423: Enable power off lanes in L1 for both mobile and desktop
+- BUG395871: Incorrect Vclk for DPM state 4
+- BUG395502: Only low Vce clocks in Power Play table
+- ENH393432: BIOS to tristate Vref for unpopulated channel
+- ENH395679: Extended Replay Timer on KV GFX port
+- ENH395498: New recommended value for KV Proc Odt Timing
+- BUG395062: SMBIOS L1 Cache Associativity equals 1
+- ENH395269: ORB Clock Gating
+- BUG391183: Type 16 show incorrect information in SMBIOS
+- ENH395280: UVD/VCE Performance Enhancements
+- ENH395309: Limit audio endpoint count to 4
+- ENH393830: KV performance related register updates
+- ENH395168: Workaround for Kaveri CC6 Processor Issue
+- ENH392179: Implement updates to PCIe RPR
+- ENH395482: Update DDI config to match RPR
+- ENH390343: Add new macro for workarounds at reset
+- BUG394421: Unreachable code in core leveling feature
+- ENH391353: TDP limiting CPU feature removal
+- ENH395275: AGESA FCH IMC enhancement
+- ENH395234: Memory latency improvement
+- ENH394773: Update to PHY gang mode settings
+- ENH395273: Implement SMU BIOS table
+- ENH395071: Enable IOMMU Power Gating
+- BUG395025: Update IOMMU DMA buffer credits
+- BUG393137: PMU SRAM Msg Block initialized incorrectly
+
+
+4.  Known Issues & Limitations
+
+- Kaveri FM2r2 hang during resume from S3 with a fully populated single channel
+
+
+=============================================================================
+
+Version:  0.0.6.0                             Release Date: April 2013
+File:     KaveriPI_0.0.6.0.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.02 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.10              (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.6.0 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.1
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module 0.0.6.0 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v016
+                 - AMD Generic GOP driver v1.48
+    PlatformBIOS - Ballina platform BIOS RBL0060C (Fp3)
+                 - Bantry platform BIOS RBT0060C (Fm2r2)
+                 - KaveriFt3Options.c
+                 - KaveriFm2r2Options.c
+    Specification - AGESA Arch2008 Interface specification v2.10
+                  - Doxygen output file arch2008.chm
+    Tools        - AMD BIOSDBG 1.40.19
+                 - BIOSTestSuite 8.0.9.1648
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.3.0:
+
+- ENH394414: Disabling Memory P-State for KV
+- ENH395294: Disable CC6 by default
+- ENH395182: Hardcode NbsynPtrAdjLo and NbsynPtrAdj to 011b
+- ENH394770: PMU FW 0xf4b enables 2D training w 2nd PMU image. Do NOT enable 2d training
+- ENH394507: Disable ProcODT tristate termination for memory Pstate 1
+- BUG394485: SB link identifier is not correct
+- ENH377950: Two SODIMM DIMM per channel support for FM2 desktop package
+- ENH394393: Release PMU FW code 0x0f4b
+- ENH394452: For sublink is display mode software needs to clear MargPkt and PcieModeSbi
+- BUG394417: Incorrect parameter used in GNB_ENTRY_WR
+- BUG393840: D18F3xD4[CacheFlushImmOnAllHalt] incorrectly set to 1
+- ENH393835: Set RXPWR_OVERRIDE_EN before training is enabled for PCIe
+- ENH391378: BIOS drive MemReset to DIMMs for warm or fake cold reset
+- ENH391725: Setup option for KV low power receiver mode
+- ENH389355: System contain incorrect IOAPIC information in the IVRS
+- ENH392437: Implement TC Client Steering Feature
+- BUG393189: PCIe UnitID Clumping is broken
+- ENH392804: KV BIOS hard code on core related GBS settings
+- ENH391721: CacDbgLock=1 in newest bring-up BIOSes
+- BUG387437: 2D Training Algorithm incorrectly identifies results
+- ENH393433: Disable GMC power gating for bringup
+- DEV393186: FCH_INTERFACE.XhciSwitch removal
+- ENH390287: Create NULL instance of PlatformLibrary to allow independent Agesa Udk package
+- ENH392721: Set BKDG recommended values for unfused parts
+- ENH391949: BKDG setting changes needed to enable clock stretcher in Proto fuse recipe
+- BUG387095: Code shouldn't support Richland in Fp3 socket
+- ENH392805: KV BIOS hard code on GNB related GBS settings
+- ENH393188: PMU firmware 0xe89
+- ENH393185: Enable Pptable
+- BUG391121: Missing SMI related configuration
+- ENH383846: LCLK DPM Initialization support for Kaveri
+- ENH388095: Implement SMU programming updates
+- ENH382324: Need a BIOS setup option for enabling/disabling data scrambling
+- ENH391484: KV S3 Resume Issue
+- BUG392725: CACMON weights and normalizer need to be written to all CUs
+- ENH392716: Remove reference to Gnb register D0F0xBC_x3F98C that no longer exists
+- ENH391469: Add event log when PMU failed training
+- DEV385932: Remove AP mailbox feature
+- ENH392197: KV SMU firmware release 13.3.0
+- ENH387498: Remove CPU feature leveling support
+- ENH391365: PCIe Clock Gating Mismatch
+- ENH391819: Remove build files in UEFI\Addendum
+- ENH391355: New fifo pointer init values for KV
+- ENH390124: Enable Gen3 CMOS option to program Gen3
+- ENH391919: Update GMC programming as per release 1.17 of the programming guide
+- ENH391354: New MRL training
+- DEV385933: Message triggered C1e feature removal
+- ENH391732: Move frame buffer location to 0xF4'00000000
+- ENH391467: Clear DisDllShutdown prior P state changes
+- ENH391466: Set BankSwapAddr8En and CsMapCKE
+- BUG391465: Limit MemClkFreq with DdrMaxRate and Lowest MemPstate is 1
+- BUG391464: Set SequenceCtrl and other misc bits
+- BUG391463: Set MRx and PerRankTimingEn
+- ENH388580: Add Instance filed to AMD_PMU_HEADER Header
+- ENH391131: Microcode patch 0x06003004
+- ENH390553: Add GNB IOAPIC IVRS table
+- BUG390864: IOMMU Programming does not match RPR
+- BUG389179: Update CsPerDelay to match PerRankTimingEn
+- BUG390873: Access to GFX device causes hard lock
+- ENH387106: GMC CMOS options
+- BUG390870: Error in default IOAPIC configuration
+- BUG390867: Incorrect values in LaneMux register
+- ENH390875: Add wrapper ID argument for PCIe Reconfig to SMU
+- ENH390874: Update GNB fuse table
+- ENH390866: Disable AER strap
+- BUG390872: Integrated Info Table is not written to frame buffer
+- ENH390862: GMC Programming Guide Updates
+- ENH390871: Update PCIe PHY Programming
+- ENH390877: Enable SCS feature
+- DEV382569: Rename HT to Topology and remove unneeded HT features
+- BUG389050: IDS has incorrect post code number in comment
+- BUG390321: GNB Typo
+- BUG387766: Insufficient error handling if PMU heap buffer not found
+- ENH388787: Smu firwmare 13.2.0 Release
+- ENH389822: Enable Alink / Blink clock gating for power saving
+- ENH388509: New KV ddr phy FIFO ptrs
+- BUG387677: ECC Exclusion Base Address register not restored after S3
+- BUG390009: Triple fault due to undefined memory function
+- ENH387193: MEM: Disable unused pins after excluding DIMMs
+- ENH389607: SMU Firmware Release
+- BUG389223: Missing entry from cpuNullServices struct
+- ENH386121: Update PCIe and PHY programming
+- DEV385922: Rename ucode patch files/arrays to match family/rev of the CPU
+- ENH387778: UEFI CAR enable macros should leave AP stack at CAR top
+- BUG386238: Memory code mismatch BKDG recommended value
+- BUG387764: PMU SRAM buffer incorrectly initialized
+- ENH387480: Implement updates from GMC Programming Guide
+- ENH386924: Integrate flags for mother board design into PSC_TBL_ENTRY
+- BUG387755: CPU Doxygen failure
+- ENH386104: Support for 1 or 2 PMU images in AGESA
+- BUG386835: ApmMasterEn incorrectly left at 0 when power check disables CPB
+- BUG387419: UMI link speed could not run in Gen2 mode
+- ENH386592: Change GPU Capability Info to clear PLL mode bits
+- BUG386906: IDS hook for breakpoint before DRAM Init
+- BUG383501: IDS Typos
+- ENH386598: SMU firmware release
+- BUG386588: PMU SRAM workaround issues
+- ENH385912: KV works around for PMU SRAM
+- ENH385496: Add support for Signature to PMU image to suppport BVM binary editing
+- ENH385497: Add support for dynamic PMU image size
+- ENH386162: KV-A0 bringup patch
+- ENH351661: IGP is disabled when set DGP as primary
+- ENH386181: Update Hudson 2/3 IMC firmware to version 1.1.1
+- ENH386039: Keyboard and PS2 mouse lost after wakeup from ACPI S4
+- BUG385786: Memory Typos
+- ENH384825: Kaveri phy powermanagement
+- BUG384080: Unnecessary code in GNB
+- BUG383958: GNB code do not match BKDG 1.01 recommended value
+- ENH384882: Workaround for auto power on after push PWR button turn off power under DOS
+- BUG385500: FCH cannot detect XHCI device after resume from ACPI S3
+- ENH383827: Store ACP memory address and size to Integrated Info Table
+- ENH385181: Tri-state unused memory clocks under condition
+- BUG384451: DCT selection incorrect for S3
+- ENH382892: Set DrvStren to 0 for unused pads
+- BUG383764: Unnecessary function prototype
+- BUG384787: Invalid include path in FCH module package DEC files causing build break
+- ENH383169: ungraceful shutdown cause Hudson D3L malfunction.
+- BUG380819: xHCI recovery mode failed on Bolton
+- BUG383537: Wrong bits swapped when CS Interleaving enabled and Channel Interleaving disable
+- BUG382761: MEM regsiters are not saved for S3
+- ENH383939: FCH provide SD controller 2.0/3.0 mode example
+- BUG383502: GNB Typos
+- BUG383920: FCH ODD enhancement take wrong storage media
+- BUG383500: Typos in CPU code
+- BUG379815: Only take effect on Mem Pstate 1
+- BUG379801: Registers override by MAKE_MEM_TABLE_ALIAS don't work
+- ENH383153: Add GnbScsInterface to load SCS values
+
+
+4.  Known Issues & Limitations
+
+- S3/Resume fails
+
+
+=============================================================================
+
+Version:  0.0.3.0                             Release Date: February 2013
+File:     KaveriPI_0.0.3.0.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v1.01 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.8               (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.3.0 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.0
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module 0.0.3.0 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v007
+                 - AMD Generic GOP driver v1.45
+    PlatformBIOS - Ballina platform BIOS RBL0030B
+                 - Bantry platform BIOS RBT0030B
+                 - SimNow BSD file ballina_kv_family15h.bsd
+                 - SimNow BSD file bantry_kv_family15h.bsd
+    Specification - AGESA Arch2008 Interface specification v2.8
+                  - Doxygen output file arch2008.chm
+
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.1.2:
+
+- ENH383192: FCH IMC enhancement
+- ENH382987: Add definitions of BFEffArbDis D18F2x2F0 and BIOS recommendation 0
+- ENH382865: Implement parallel execution of early initialization tables
+- ENH382173: Update GMC Steer settings interface
+- BUG382883: FCH default settings for internal UCBS auto options
+- BUG382344: Unnecessary round of MaxRdLatency training performed
+- BUG382334: Update MaxRdLatency worst case CS selection algorithm
+- BUG381257: GNB fields do not match BKDG 1.00/0.99 recommended values
+- DEV382844: CPU 1.01 BKDG updates
+- ENH382786: FCH SATA ODD enhancement
+- BUG382113: FCH USB keyboard doesn't work in DOS mode
+- BUG381725: S3 resume assert
+- BUG382340: PMU firmware version is read before firmware is loaded
+- ENH380127: Displays PMU firmware version to HDTOUT
+- BUG382095: Header files not in sync
+- BUG381937: remove Non-SIO legacy USB support
+- ENH341728: Reserve system memory for KV ACP engine
+- BUG381532: Unresolved externals in GNB files
+- BUG381262: AGESA should not set D18F4x128[31, CstateMsgDis]
+- BUG380129: BSOD when booting Win7 with ALIB enabled
+- BUG380684: Tstag not programmed per BKDG requirements
+- BUG379801: Registers override by MAKE_MEM_TABLE_ALIAS don't work
+- BUG365450: Combo AGESA fails to detect any PCIe device behind APU PCIE GPP and GFX
+- ENH380903: LVDS early power on enhancement
+- ENH375458: GMC Programming Updates
+- BUG381065: Hang in SMU firmware loading
+- BUG349965: HYSTERESIS not set correctly
+- ENH375943: Workaround implementation for Auto ROM size detection with new SPI engine
+- BUG380672: PMU frequency too high in MP1
+- BUG380667: Potential infinite loop in PMU message processing
+- BUG380663: Asserting following Chip-To-Pad Mapping Update
+- ENH380125: Update Chip-To-Pad Mapping to match latest BKDG
+- DEV380432: Add code to configure DisCstateBoostBlockPstateUp
+- ENH370395: make InitEarlyTable has the capability of being dispatched in multi time points
+- ENH379413: DDR3 ECC SODIMM Support
+- BUG367580: Typos in GNB code
+- ENH378787: Incorrectly retrieve the PMU mail box 2
+- ENH378426: Add AGESA BLDCFG (and POST time) option for 2x refresh rate
+- BUG379880: Incorrect value written to Proc Odt Timing register
+- BUG379923: xHCI controller disappear after S3
+- ENH379872: GNB KV: SMU firwmare release 11.2.0
+- ENH379478: Alib remove combo support explicitly defined
+- BUG379616: Hybrid Boost support reintroduced internal build errors.
+- BUG372742: Enable link clumping on ONIONPlus link
+- BUG379203: PMUClkDiv bitfield length incorrect
+- BUG379187: Incorrect Chip-To-Pad mapping
+- DEV344922: Implement PSI
+- BUG379420: Default of FCH_RESET_DATA_BLOCK is not synced with the definition for Hudson2
+- ENH379168: Set DctSetIntLvAddr even when Channel Interleaving is disabled
+- BUG379392: Correct build errors from previous check-in
+- ENH367783: AlibV2 combo BIOS support
+- ENH379202: Configurable HTC temperature limit
+- BUG379154: Build warnings/errors in Control command throttle mode code
+- ENH378769: Set F2xA8_dct[3:0] PDPhyPSDis
+- BUG372740: F5x170[30] not being set on cold reset
+- DEV378578: KV CPU: 0.98 BKDG updates
+- BUG378471: CreateEventEx function should be supported by CloseEvent
+- ENH335755: CHUB registers programming
+- BUG378397: Duplicate definitions of BFReserved02 cause internal build failures
+- ENH376981: DRAM Channel Disable
+- ENH376857: PMI_CAP.PME_Support field is not setting bits 27,30, and 31
+- BUG376839: Potential infinite loop in FCH code
+- ENH375966: Disable: D0F0x64_x16[AerUrMsgEn]
+- ENH370316: Add customer visible config for DcTDP
+- DEV375924: Encrypted microcode patch, patch ID 12132012
+- ENH375282: CPU: 0.97 BKDG updates
+- BUG375441: FCH Doxygen issue
+- BUG374006: Unreachable code in memory
+- DEV375472: HT option install minor clean up
+- DEV375304: Update copyright date to 2013
+- BUG373971: Incorrect type used in FCH loop
+- ENH374927: Update IBV less makefile format
+- BUG374027: MEM C-Style Issue
+- ENH373409: FCH LPC CLKRUN Enhancement
+- ENH362510: GNB - Need timing points for BIOS Instrumentation
+- BUG372294: ENUM type can not be used during pre-compile
+- BUG372735: Missing MCT config register definition causes incorrect settings
+- ENH372392: Update KV registers to 0.94, 0.95 and 0.96 BKDG updates
+- ENH360290: Update KV registers to 0.93 BKDG values
+- BUG360062: Remove unnecessary file
+- ENH368727: Add ECC support
+- BUG369704: Memory code clears F5x170[NbPstateThreshold]
+- ENH370535: SCS EnergyCntNorm should account for HWP0 before Power Delivery Check
+- BUG370377: Header file not used
+- BUG370531: Incorrect SMM_SW_CONTEXT in SW SMM dispatcher causing failure in handler
+- BUG370282: Assert in memory code
+- BUG369026: Do not set MSRC001_0010 [SysUcLockEn] in cahalt code
+- BUG370280: Memory build warnings
+- ENH362259: Review and fix S3 resume for KV
+- ENH362760: Convert Aggressor Generation Code to a generic memory feature
+- ENH366409: Add Sclk dependency table to Pptable
+- BUG348216: Register value mismatch BKDG recommendation
+
+
+4.  Known Issues & Limitations
+
+- None
+
+
+=============================================================================
+
+Version:  0.0.1.2                             Release Date: November 2012
+File:     KaveriPI_0.0.1.2.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v0.95 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.7               (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.1.2 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.0
+                                      - XHC Firmware v1.1.0.59
+    CPM - Common Platform Module 0.0.1.2 for Kaveri platform solution
+    VBIOS        - Kaveri Generic VBIOS v006
+                 - AMD Generic GOP driver v1.41
+    PlatformBIOS - Ballina platform BIOS RBL0012B
+                 - Bantry platform BIOS RBT0012B
+                 - SimNow BSD file ballina_kv_family15h.bsd
+                 - SimNow BSD file bantry_kv_family15h.bsd
+    Specification - AGESA Arch2008 Interface specification v2.7
+                  - Doxygen output file arch2008.chm
+
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.1.1:
+
+- ENH367781: SPI Quad Mode Support Enhancement
+- ENH365247: Take EccByteTraining into account when calculating max lane for 2D training
+- BUG367607: Build error if DIMM support removal build options used
+- BUG367412: PcieAlibV2 assert
+- BUG367399: Incorrect test condition in SPI transfer code
+- ENH366776: Update energy count normalizer with CSampleTimer term
+- BUG367411: FCH EFI SD workaround driver malfunction after S3 resume
+- BUG364758: ACPI Alib function doesn't work
+- ENH367142: Update memory code to KV BKDG
+- ENH366776: Update energy count normalizer with CSampleTimer term
+- BUG367411: FCH EFI SD workaround driver malfunction after S3 resume
+- BUG364758: ACPI Alib function doesn't work
+- BUG365620: MEM channels aren't exactly disabled when MaxFreq table is not found
+- ENH365454: Update _PSD object
+- ENH362371: Support quad mode for customer SPI devices
+- ENH364196: FCH Usb3PortProtectWA SMM driver to support multi-version.
+- BUG366655: FCH Disable WAKE# malfunction
+- ENH365386: Bolton A1 XHCI programming required to enable A1 enhancements
+- ENH365406: Bolton A1 Bios setting required for OHCI
+- ENH365405: Bolton A1 BIOS changes required for HD Audio
+- ENH365402: Bolton A1 BIOS ACPI /LPC
+- ENH364540: Change AGESA default for CFG_LCD_BACK_LIGHT_CONTROL
+- BUG357989: DRAM scrubbing should be enabled after all writes to phy
+- ENH364196: FCH Usb3PortProtectWA SMM driver to support multi-version
+- BUG364096: SimNow hangs at PC 0x7 when run Combo SBIOS
+- ENH349674: Remove unnecessary functions and bitfield definitions
+- BUG363545: FCH XHCI wrong define of firmware signature
+- ENH360401: Print MemClk at each cycle of MaxRdLatency training in HDTOUT
+- BUG362274: FchSdVoltageSwitch and SdClkDrivingLowWA build files need to be updated
+- ENH361300: Customize ACPI OEM and OEM TABLE IDs
+- BUG361977: GNB invalid extern
+- ENH362243: Add IDS hook to report SMU Firmware Version
+- BUG361230: SMBIOS Type 20 reported incorrectly when OnlineSpare is enabled
+- ENH358303: Move NB Pstates from BLDCFG_PLATFORM_POWER_POLICY_MODE into another BLDCFG
+- ENH362051: FCH SD Voltage Switch
+- ENH362050: FCH SD Driving Low Workaround
+- DEV343841: Implement Combo support for desktop FM2r2 platforms
+- BUG331813: Erroneous status parsing in Vref training eye sampling
+- BUG357376: The calcuation of MaxRdLatency is incorrect
+- BUG361649: Fix problems when HDT out is enabled
+- ENH348862: 2D Memory Training update
+- ENH360844: Change Hybrid Boost Enable default to TRUE
+- ENH358312: Customize ACPI OEM and OEM TABLE IDs
+- BUG347337: Combo UCBS support have problem
+- ENH359975: Add support for AGESA PI release generation
+- BUG358310: SMM dispatcher may cause system to hang up on ASSERT_EFI_ERROR
+  when EFI_DEBUG is turned on
+
+
+4.  Known Issues & Limitations
+
+- None
+
+
+=============================================================================
+
+Version:  0.0.1.1                             Release Date: September 2012
+File:     KaveriPI_0.0.1.1.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v0.90 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.6               (#44065)
+
+=============================================================================
+
+1.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.1.1 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.1.0
+                                      - XHC Firmware v1.1.0.55
+    CPM - Common Platform Module 0.0.1.1 for Kaveri platform solution
+    VBIOS - Kaveri Generic VBIOS v005
+    PlatformBIOS - Ballina platform BIOS RRB0011B
+                 - SimNow BSD file ballina_kv_family15h.bsd
+    Specification - AGESA Arch2008 Interface specification v2.6
+                  - Doxygen output file arch2008.chm
+
+
+2.  Agesa ENHANCEMENTS and FIXED BUGS after 0.0.1.0:
+
+- BUG357183: Missing bitfield definition causes SBIOS errors
+- ENH355288: Reserve HDTOUT filters for platform data
+- BUG354004: Illegal access to MSRC001_0015
+- BUG355417: LibAmdHDTBreakPoint function in amdlib64.asm destroy rcx, rax and rdi
+- BUG354912: S5/Reset Status Register (Pm_reg: C0h) left in debug state
+- ENH353990: FCH Bolton DotHill RAID/RAID5 support
+- BUG353738: Unsupported DIMM Configuration Error
+- BUG352911: Build will fail if include AmdFchHWM module.
+- BUG352897: FCH build failures
+- BUG353136: FCH Style Issue
+- BUG351670: Mem Context Restore needs to call MemClr when ECC is enabled
+- BUG352528: IDS build failure
+- BUG349911: IDS Typo
+- BUG352440: SMBUS Read Word was functioning properly
+- BUG344448: System hangs during BIOS POST if W25Q32BV Quad mode enabled
+- BUG343426: Memory InitDefaults called only once for Combo BIOS
+- BUG351070: pptable needs to be compatible with v2 structures
+- ENH351113: Configure SMU_SVI_TELEMETRY
+- BUG350871: Un-existed path of protocol in FchDxeMmio.inf
+- BUG347365: Assert when calculating TransitionLatency with boost disabled
+- ENH349627: using incorrect register for PCIe speed change
+- ENH349745: Enhancement to make SMU ROM binary replacement possible
+- BUG344285: ClumpEn not set correctly for Onion link
+- ENH345893: Map SMBIOS Type 17 & Type 20 entries
+- BUG350002: Typos in earlier S3 dispatch
+- ENH348861: Clear PE flag after floating-point operations
+- BUG349387: MEM Prototype issue
+- BUG349107: Common file includes APU-specific header
+- BUG349492: MMIO manager bound check is incorrect
+- DEV343876: AMD_Proc_Mem_NB.vcproj file does not reference the mntrain2.c file
+- BUG347678: MEM events are not added to agesa.inc
+- ENH347666: Add hook for PCIe bridge device remapping
+- ENH347385: IOAPIC base address assignment in AGESA
+- BUG344917: Type 20 has wrong value with Node Interleaving set to Auto
+- BUG341720: Inconsistent register setting
+- ENH347656: LPC cycle abort sync threshold setting
+- BUG331124: Uninitialized variable accessed in mftds
+- ENH325405: Add supprot for logging HDTout data to eSRAM
+- ENH341012: Add event log msg when capsule is in effect
+- BUG347340: ALIB2 build error when ALIB option is disabled
+- DEV345520: Phase 2 CPU changes for SCS support
+- DEV317281: PPtable Enhancements
+- ENH341004: Need to add onboard Ricoh device onto L0s blacklist
+- BUG346138: Twr timing value assertion needs to be removed
+- BUG341008: Incorrect Type 20 values with unpopulated slots
+- DEV317260: PCIe reconfig procedure
+- BUG344323: Misspelled option in PlatformInstall.h could cause Core Leveling to be disabled
+- ENH335541: Phase 1 CPU changes for SCS support
+- DEV317258: Voltage control
+- BUG344888: IDS style issues
+- ENH344655: Add new type of swap interleaved region
+- BUG344579: Boost still reenabled after disabled by power check
+- BUG344915: For combo BIOS, need slew rate default definition.
+- DEV343751: CBS option Prochot SMI Mask - APIC330 LVT thermal sensor, bit16 MASK.
+- ENH315060: CPU feature code needs better entry point separation
+- ENH344009: FCH BKDG/RPR update implementation
+- ENH338600: IOMMU Reset De-assertion when internal graphic is fused off
+- ENH341050: Add logic to avoid multiple defnintion of macros & datas
+- BUG343889: Wrong registers written during CAR Init
+- ENH339072: Add support of event log reading after AmdInitPost
+- BUG339576: Sw Prefetches BLDCFG settings applied incorrectly
+- BUG341736: Trrd possibly set below DDR3 spec minimum
+- DEV342439: VSRampSlamTime is now defined in the BKDG as a fixed value.
+- ENH342555: Add “BoostTimeConstant" to SMU2BIOS structure
+- DEV342859: Change in DP lane mapping
+- BUG341255: The ending address of SMBIOS type19 should not account dram hole size
+- ENH341056: FCH EHCI and XHCI USB2.0 driving strength
+- ENH341023: FCH BKDG/RPR update implementation
+- BUG341036: MEM prototype issue
+- ENH341855: Add Gmmx register support for GRA & BVM
+- BUG336355: Boost reenabled after disabled by power check
+- BUG341702: GNB copyright header and SVN properties issue
+- BUG341003: SMU7 Doxygen Warning
+- ENH341017: XHCI SSC setting need to be modified to 0.373% from 0363%
+- DEV317447: Support for SMU interrupt request in unified reg access write
+- ENH338853: Update to New BKDG
+- ENH335361: Remove deprecated build config from code
+- DEV339246: BKDG updates.
+- BUG337147: CRAT and SMBIOS crash in memory capsule due to internal data loss
+- BUG338871: Buffer Count / Token registers don't match BKDG
+- DEV338429: IDS code update
+- ENH338904: FCH XHCI FW update
+- BUG338583: Incorrect NbPstateThreshold value
+- BUG335074: GMC Programming Issues
+- ENH334039: Uppdate PCIe endpoint blacklist for Atheros
+- BUG336652: Typos in GNB code comments
+- BUG337489: CreateStruct step for entry point calls does not work as expected using legacy
+- BUG336655: Typos in CPU code comments
+- BUG331408: FCH unnecessary setting
+- ENH335338: Extend AGESA_PACKAGE_STRING to 16 bytes.
+- DEV337586: Kaveri CBS IDS support
+- BUG336667: BankSwapAddr8En not being set per BKDG
+- BUG337045: Undefined symbols - GET_BROADCAST_OVERRIDE, GET_BROADCAST_FLAGBUG336710:  MEM Style Issues
+- BUG331651: Memory register definitions don't match BKDG
+- BUG328849: Memory code mismatch BKDG recommended value
+- DEV335832: DimmPresent not programmed in DMI data structure
+- BUG337514: Cannot configure DP3 on lanes 12-15
+- ENH330425: Update NCLK:MEMCLK ratio requirement
+- BUG337007: FCH Doxygen Warnings
+- BUG337043: New PSCFG_TYPE entries cause POST issues
+- BUG336334: Incorrect KV fuse table entries
+- BUG336669: Memory Doxygen Warnings
+- DEV332128: Add Agesa support for combo BIOS
+- ENH336061: FCH BKDG/RPR implementation
+- ENH331620: Update memory code
+- BUG336060: FCH AB CpuOnSyncFlood setting incorrect
+- ENH329990: VddNbVid updates
+- DEV335637: Update gnb register file definition
+- BUG334778: Coverity Unintended Sign Extension
+- BUG334773: MEM Style Issues
+- BUG325082: BLDCFG_VRM_MAXIMUM_CURRENT_LIMIT support needs to be added
+- DEV335003: System info Table for VBIOS and Driver is not correct
+- BUG334758: Coverity Overruning Static Array RomStore
+- BUG334780: Coverity Unsigned compared against 0
+- DEV329141: BKDG updates
+- BUG334433: CPU Style Issues
+- BUG332127: Move Definitions
+- BUG334435: GNB Style Issues
+- ENH329132: Remove TscFreqSel programming hook
+- BUG334529: FCH style issues.
+- BUG334579: FCH variable dbStatus0 is undefined
+- BUG334461: Uninitialized variable accessed in spiReset
+- BUG334409: Incorrect Display Path
+- ENH320899: Clean up the install macros in OptionDmiInstall.h
+- BUG332348: Capsule and MemRestore: ASSERT is triggered in the restore path
+- ENH317406: Provide option to allow overriding existing MMIO map
+- ENH327622: CRAT Memory Affinity table updates
+- ENH333755: SMU Firmware Release 11.0.0
+- BUG331408: FCH unnecessary setting
+- BUG333671: FCH XHCI UserDefineXhciRomAddr does not function
+- DEV333437: Implement external display path support in ATOM table
+- BUG330492: FCH_RESET_DATA_BLOCK couldn't be copied to main memory in AGESA legacy mode
+- ENH329647: SMU Firmware adding ImageSize field
+- ENH329002: Update register definition
+- ENH326329: AMD_ENABLE_UEFI_STACK support alternative assignment on stack base
+- ENH328721: Quad mode support for W25Q64
+- BUG331126: Possible NULL pointer dereference in gfxIntegratedInfoTable
+- BUG331412: FCH Custom GPP typo
+- BUG334751: W25Q32 Quad mode support
+- BUG330881: MMIO manager set wrong limit
+- BUG330395: Do NOT switch to DCT1 for single channel products during 2D training
+- BUG330793: FCH DxeMmio Driver range setting incorrect
+- BUG329038: Remove unused header file reference in GnbPcieTrainingV2
+- ENH329644: Add FCH_SPI_MMIO_REG1D define in Fch.h
+- BUG328176: Unnecessary MSR access
+- BUG328909: MEM_PARAMETER_STRUCT mismatch
+- DEV327631: FCH Bolton BKDG update
+- BUG327323: GNB code mismatch BKDG recommended value
+- ENH321977: Add AMP Support
+- ENH327902: Remove GDDR5 support
+- BUG327916: FCH Deadcode
+- BUG328436: Duplicate routines
+- BUG328222: Incorrect setting in memory aperture size
+- BUG327917: Unchecked return value in Memory
+- DEV306748: Integrated info table support
+- BUG326545: MSR Illegal Access
+- BUG328200: H-Inc Sync Verify Error
+- BUG327915: GNB NULL Pointer Dereferences
+- BUG326223: Duplicate INSTALL_FP3_SOCKET_SUPPORT sections in PlatformInstall.h
+- BUG326976: GNB prototype issue
+- BUG327872: GNB Doxygen Warnings
+
+
+4.  Known Issues & Limitations
+
+- None
+
+
+=============================================================================
+
+Version:  0.0.1.0                             Release Date: May 2012
+File:     KaveriPI_0.0.1.0.ZIP
+
+=============================================================================
+
+Compliant to specs:                                                     PID#
+- BIOS and Kernel Developer's Guide (Family 15h Models 30h-3Fh) v0.90 (#49125)
+- AGESA Arch2008 Interface Specification, Revision v2.5               (#44065)
+
+=============================================================================
+
+ENHANCEMENTS and FIXED BUGS:
+* First version of Kaveri Platform Initialization package that includes
+Processor and chipset (SB) initialization code for IBV/OEM platform BIOS
+Development. This code hasn't been validated booting on a real H/W
+* KaveriPI_0.0.1.0.zip hasn't been through AMD internal QA process but completed
+BIOS verification using SimNow.
+
+1.  As previously communicated the purpose of the 0.1 release of KaveriPI is
+    to provide customers with an early look at the new Architecture 2008
+    platform initialization library for the FP3 socket.  The 0.1 release
+    is intended to be:
+        a.  100% API complete
+        b.  able to boot a single fixed configuration under SimNow
+
+    Per plan, the 0.1 release is NOT code complete or feature complete.  Key
+    features may be stubbed out, incomplete and/or buggy.  Features may not
+    function if used outside of the fixed demonstration configuration.
+
+    Customers are able to use the 0.1 release to prepare their wrappers and
+    conduct limited testing with the KaveriPI code under SimNow. AMD
+    welcomes your feedback on this 0.1 release.
+
+    The following future releases beyond 0.1 are planned:
+
+        0.3 - 100% code complete and feature complete, functionality
+              largely untested
+
+        0.5 - Pre bring-up -Thoroughly tested under SimNow
+
+        0.6 - Alpha release - code brought-up on real silicon, QA passed
+
+        0.7 - Beta release - lab characterization data incorporated
+
+        0.9 - Production Release Candidate
+
+        1.0 - Production Release
+
+    Additional intermediate releases may be issued as deemed necessary.
+
+
+2.  Package contents
+
+    AGESA - AGESA Arch2008 0.0.1.0 for Kaveri platform solution
+    Option ROM (under AGESA\Addendum) - IMC Firmware v1.0.9
+                                      - XHC Firmware v1.0.0.48
+    CPM - Common Platform Module 0.0.1.0 for Kaveri platform solution
+    VBIOS - Kaveri Generic VBIOS v003
+    PlatformBIOS - Ballina platform BIOS RRB0010B
+                 - SimNow BSD file ballina_kv_family15h.bsd*
+    Specification - AGESA Arch2008 Interface specification v2.5
+                  - Doxygen output file arch2008.chm
+
+
+3.  Build Instructions
+
+    --- AGESA Component for UEFI ---
+    a. To build libraries to be used in PEI phase, please include the
+       following line in master BUILD.DSC:
+        !include $(AGESA_PATH)\UEFI\Library\AgesaPei0Libs.dsc
+
+    b. Include the following lines in COMPONENTS section for PEI build in
+       master BUILD.DSC:
+        (AGESA_PATH)\UEFI\Pei\Smbus\Smbus.inf
+        (AGESA_PATH)\UEFI\Pei\AmdProcessorInitPeim\AmdProcessorInitPeim.inf
+        (AGESA_PATH)\UEFI\Pei\FchPei\FchPei.inf
+        (AGESA_PATH)\UEFI\Pei\AmdResetManager\AmdResetManager.inf
+        (AGESA_PATH)\UEFI\Pei\AmdInitPostPeim\AmdInitPostPeim.inf
+
+    c. To build libraries to be used in DXE phase, please include the
+       following line in master BUILD.DSC:
+        !include $(AGESA_PATH)\UEFI\Library\AgesaDxe0Libs.dsc
+        (AGESA_PATH)\UEFI\Protocol\FchProtocolLib\FchProtocolLib.inf
+
+    d. Include the following lines in COMPONENTS section for DXE build in
+       master BUILD.DSC:
+        (AGESA_PATH)\UEFI\Dxe\AmdAgesaDxeDriver\AmdAgesaDxeDriver.inf
+        (AGESA_PATH)\UEFI\Dxe\Smbus\SmbusLight.inf
+        (AGESA_PATH)\UEFI\Dxe\SmmControl\SmmControl.inf
+        (AGESA_PATH)\UEFI\Dxe\Cf9Reset\Cf9Reset.inf
+        !include $(AGESA_PATH)\UEFI\Library\$(SOLUTION)\FchDxeDrivers.dsc
+        (AGESA_PATH)\UEFI\Dxe\FchWhea\FchWhea.inf
+        (AGESA_PATH)\UEFI\Dxe\LegacyInterrupt\LegacyInterrupt.inf
+
+    Where AGESA_PATH is the path for the Agesa folder.  SOLUTION is the path
+    for the Indus or Aries folder.  Please follow the build instruction
+    as per your IBV code base.
+
+    AgesaPlatformLib.inf and AgesaCallOutPlatformLib.inf will build the
+    required libraries while AmdProcessorInitPeim.inf and AmdInitPostPeim.inf
+    will build required PEI modules.
+
+
+4.  Known Issues & Limitations
+    *Using SimNow NDA version 4.7.1 for KaveriPI 0.0.1.0.
+
+
+
+=============================================================================

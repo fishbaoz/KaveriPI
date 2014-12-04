@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.se_eng.edk.xgcc.2134096632">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.se_eng.edk.xgcc.2134096632" moduleId="org.eclipse.cdt.core.settings" name="Default">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration buildProperties="" description="" id="com.se_eng.edk.xgcc.2134096632" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="com.se_eng.edk.xgcc.2134096632.43692481" name="/" resourcePath="">
+						<toolChain id="com.se_eng.edk.xgcc.1059898171" name="com.se_eng.edk.xgcc" superClass="com.se_eng.edk.xgcc">
+							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="com.se_eng.edk.xgcc.platform.1883419090" isAbstract="false" name="Coreboot Platform" superClass="com.se_eng.edk.xgcc.platform"/>
+							<builder id="com.se_eng.edk.xgcc.builder.1420656251" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Coreboot XGCC Builder" superClass="com.se_eng.edk.xgcc.builder"/>
+							<tool id="com.se_eng.edk.xgcc.assembler.1922354576" name="Coreboot XGCC Assembler" superClass="com.se_eng.edk.xgcc.assembler">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1277018795" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="com.se_eng.edk.xgcc.archiver.1325726166" name="Coreboot XGCC Archiver" superClass="com.se_eng.edk.xgcc.archiver"/>
+							<tool id="com.se_eng.edk.xgcc.cpp.compiler.1510218679" name="Coreboot XGCC C++ Compiler" superClass="com.se_eng.edk.xgcc.cpp.compiler">
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1979700422" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.se_eng.edk.xgcc.c.compiler.1466345780" name="Coreboot XGCC C Compiler" superClass="com.se_eng.edk.xgcc.c.compiler">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2036553268" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.se_eng.edk.xgcc.c.linker.186741668" name="Coreboot XGCC C Linker" superClass="com.se_eng.edk.xgcc.c.linker"/>
+							<tool id="com.se_eng.edk.xgcc.cpp.linker.998821510" name="Coreboot XGCC C++ Linker" superClass="com.se_eng.edk.xgcc.cpp.linker">
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1497141832" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="AGESA (gerrit).null.1039205391" name="AGESA (gerrit)"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>

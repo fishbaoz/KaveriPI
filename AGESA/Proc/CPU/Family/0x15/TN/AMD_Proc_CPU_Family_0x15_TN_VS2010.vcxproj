@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Debug|Win32">
+			<Configuration>Debug</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|Win32">
+			<Configuration>Release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals" Condition="1==1">
+		<RootNamespace>AMD_Proc_CPU_Family_0x15_TN_VS2010</RootNamespace>
+		<ProjectGuid>{461613A9-1609-400D-B16A-826876B12A25}</ProjectGuid>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<ImportGroup Label="ExtensionSettings">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+	</ImportGroup>
+	<PropertyGroup Label="UserMacros" Condition="2==2"/>
+	<PropertyGroup Condition="3==3">
+		<_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+	</PropertyGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)";"$(AGESA_ROOT)Lib\";"$(AGESA_ROOT)Proc\CPU\";"$(AGESA_ROOT)Proc\CPU\Family\";"$(AGESA_ROOT)Include\";"$(AGESA_ROOT)Proc\IDS\";"$(AGESA_ROOT)Proc\CPU\Family\0x15\";"$(AGESA_ROOT)Proc\CPU\Family\0x15\TN\";"$(AGESA_ROOT)Proc\CPU\Feature\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitTN\";"$(AGESA_ROOT)Proc\GNB\Common\";"$(AGESA_ROOT)Proc\IDS\Family\0x15\TN\";"$(AGESA_ROOT)Proc\Fch\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbCommonLib\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)";"$(AGESA_ROOT)Lib\";"$(AGESA_ROOT)Proc\CPU\";"$(AGESA_ROOT)Proc\CPU\Family\";"$(AGESA_ROOT)Include\";"$(AGESA_ROOT)Proc\IDS\";"$(AGESA_ROOT)Proc\CPU\Family\0x15\";"$(AGESA_ROOT)Proc\CPU\Family\0x15\TN\";"$(AGESA_ROOT)Proc\CPU\Feature\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitTN\";"$(AGESA_ROOT)Proc\GNB\Common\";"$(AGESA_ROOT)Proc\IDS\Family\0x15\TN\";"$(AGESA_ROOT)Proc\Fch\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbCommonLib\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemGroup Label="Sources">
+		<ClCompile Include=".\cpuF15TnCacheFlushOnHalt.c"/>
+		<ClCompile Include=".\cpuF15TnCoreAfterReset.c"/>
+		<ClInclude Include=".\cpuF15TnCoreAfterReset.h"/>
+		<ClCompile Include=".\cpuF15TnDmi.c"/>
+		<ClCompile Include=".\cpuF15TnHtc.c"/>
+		<ClCompile Include=".\cpuF15TnNbAfterReset.c"/>
+		<ClInclude Include=".\cpuF15TnNbAfterReset.h"/>
+		<ClCompile Include=".\cpuF15TnPowerCheck.c"/>
+		<ClInclude Include=".\cpuF15TnPowerCheck.h"/>
+		<ClInclude Include=".\cpuF15TnPowerMgmt.h"/>
+		<ClCompile Include=".\cpuF15TnPsi.c"/>
+		<ClCompile Include=".\cpuF15TnPstate.c"/>
+		<ClCompile Include=".\F15TnC6State.c"/>
+		<ClCompile Include=".\F15TnCpb.c"/>
+		<ClCompile Include=".\F15TnEarlySamples.c"/>
+		<ClCompile Include=".\F15TnEquivalenceTable.c"/>
+		<ClCompile Include=".\F15TnId6100MicrocodePatch.c"/>
+		<ClCompile Include=".\F15TnId6101MicrocodePatch.c"/>
+		<ClCompile Include=".\F15TnInitEarlyTable.c"/>
+		<ClCompile Include=".\F15TnIoCstate.c"/>
+		<ClCompile Include=".\F15TnLogicalIdTables.c"/>
+		<ClCompile Include=".\F15TnMicrocodePatchTables.c"/>
+		<ClCompile Include=".\F15TnMsrTables.c"/>
+		<ClInclude Include=".\F15TnPackageType.h"/>
+		<ClCompile Include=".\F15TnPciTables.c"/>
+		<ClCompile Include=".\F15TnPowerMgmtSystemTables.c"/>
+		<ClCompile Include=".\F15TnPowerPlane.c"/>
+		<ClInclude Include=".\F15TnPowerPlane.h"/>
+		<ClCompile Include=".\F15TnSharedMsrTable.c"/>
+		<ClCompile Include=".\F15TnUtilities.c"/>
+		<ClInclude Include=".\F15TnUtilities.h"/>
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+	<ImportGroup Label="ExtensionTargets">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+	</ImportGroup>
+</Project>

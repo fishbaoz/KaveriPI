@@ -1,0 +1,174 @@
+
+                        Release Notes for
+                        -----------------
+                       Bantry CPM OEM Driver
+
+
+=============================================================================
+
+Version: 1.1.0.5                                    Release Date: April 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.1.0.4                                    Release Date: April 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.1.0.3                                    Release Date: March 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.1.0.2                                    Release Date: February 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.1.0.1                                    Release Date: February 2014
+
+=============================================================================
+
+- ENH433802: Add CMOS option for SSID override control
+- ENH433942: CPM SSID override control
+
+
+=============================================================================
+
+Version: 1.1.0.0                                    Release Date: January 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.0.8.0                                    Release Date: November 2013
+
+=============================================================================
+
+- ENH424957: Add iceland DID on Bantry BIOS support
+
+
+=============================================================================
+
+Version: 1.0.0.0                                    Release Date: November 2013
+
+=============================================================================
+
+- ENH424650: BIOS to report correct connector type instead of what is connected
+
+
+=============================================================================
+
+Version: 0.0.8.2                                    Release Date: October 2013
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 0.0.8.1                                    Release Date: September 2013
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 0.0.8.0                                    Release Date: August 2013
+
+=============================================================================
+
+- BUG410922:  Bantry boards shutdown intermittently
+
+
+=============================================================================
+
+Version: 0.0.6.3                                    Release Date: July 2013
+
+=============================================================================
+
+- ENH405706: 6 outputs support
+- ENH405995: Change GFX PCIe Reset sequence for Bantry
+
+
+=============================================================================
+
+Version: 0.0.6.2                                    Release Date: June 2013
+
+=============================================================================
+
+- ENH400023: Move iGPU special post in function GetPostedVbiosImage
+
+
+=============================================================================
+
+Version: 0.0.6.1                                    Release Date: May 2013
+
+=============================================================================
+
+- ENH396514: Update Device Id list to support PowerXpress
+- ENH399513: Add default setup setting when cmos is corrupted
+
+
+=============================================================================
+
+Version: 0.0.6.0                                    Release Date: April 2013
+
+=============================================================================
+
+- BUG384112: Bantry uses BOARD_ID3 (GPIO17) to identify Bantry or Bantry DAP
+- ENH384762: Update cmos offset for CPM save context
+- ENH385938: Add ClkReq setup option
+- ENH386088: Support DL-DVI on C527
+- BUG390595: Incorrect Table Size For The AMD_CPM_GPIO_DEVICE_RESET_TABLE Table
+- ENH392413: Add support for PowerXpress (PX) Desktop A+A
+- BUG393183: Fix DL_DVI doesn't work on Bantry DAP system issue
+- ENH393181: FM2r2 redefines PCIE/DDI mapping
+- ENH391369: SB port (UMI-link) ASPM and link speed does not follow CMOS settings
+- ENH393434: Support B964+B991+ B996 combination
+
+=============================================================================
+
+Version: 0.0.3.0                                    Release Date: January 2013
+
+=============================================================================
+
+- DEV370047: Use on board LPC POST LED
+- DEV370505: GFX link configuration feature
+- DEV371943: PCIE add-in cards detection
+- DEV374253: Update GPIO setting
+- DEV375467: Support C527 adapter
+- DEV376340: Use CPM GPIO-related tables instead of set GPIO directly
+- DEV380630: Add Adaptive S4 support for Bantry
+- DEV382313: Support B966 and B962 PCIe card
+
+=============================================================================
+
+Version: 0.0.1.2                                    Release Date: October 2012
+
+=============================================================================
+
+- First version of Bantry CPM OEM Driver

@@ -1,0 +1,977 @@
+/**
+ * @file
+ *
+ * ALIB ASL library
+ *
+ *
+ *
+ * @xrefitem bom "File Content Label" "Release Content"
+ * @e project:     AGESA
+ * @e sub-project: GNB
+ * @e \$Revision: 281181 $   @e \$Date: 2013-12-18 02:18:55 -0600 (Wed, 18 Dec 2013) $
+ *
+ */
+/*
+*****************************************************************************
+*
+* Copyright 2008 - 2014 ADVANCED MICRO DEVICES, INC.  All Rights Reserved.
+*
+* AMD is granting you permission to use this software (the Materials)
+* pursuant to the terms and conditions of your Software License Agreement
+* with AMD.  This header does *NOT* give you permission to use the Materials
+* or any rights under AMD's intellectual property.  Your use of any portion
+* of these Materials shall constitute your acceptance of those terms and
+* conditions.  If you do not agree to the terms and conditions of the Software
+* License Agreement, please do not use any portion of these Materials.
+*
+* CONFIDENTIALITY:  The Materials and all other information, identified as
+* confidential and provided to you by AMD shall be kept confidential in
+* accordance with the terms and conditions of the Software License Agreement.
+*
+* LIMITATION OF LIABILITY: THE MATERIALS AND ANY OTHER RELATED INFORMATION
+* PROVIDED TO YOU BY AMD ARE PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED
+* WARRANTY OF ANY KIND, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+* MERCHANTABILITY, NONINFRINGEMENT, TITLE, FITNESS FOR ANY PARTICULAR PURPOSE,
+* OR WARRANTIES ARISING FROM CONDUCT, COURSE OF DEALING, OR USAGE OF TRADE.
+* IN NO EVENT SHALL AMD OR ITS LICENSORS BE LIABLE FOR ANY DAMAGES WHATSOEVER
+* (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, BUSINESS
+* INTERRUPTION, OR LOSS OF INFORMATION) ARISING OUT OF AMD'S NEGLIGENCE,
+* GROSS NEGLIGENCE, THE USE OF OR INABILITY TO USE THE MATERIALS OR ANY OTHER
+* RELATED INFORMATION PROVIDED TO YOU BY AMD, EVEN IF AMD HAS BEEN ADVISED OF
+* THE POSSIBILITY OF SUCH DAMAGES.  BECAUSE SOME JURISDICTIONS PROHIBIT THE
+* EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES,
+* THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+*
+* AMD does not assume any responsibility for any errors which may appear in
+* the Materials or any other related information provided to you by AMD, or
+* result from use of the Materials or any related information.
+*
+* You agree that you will not reverse engineer or decompile the Materials.
+*
+* NO SUPPORT OBLIGATION: AMD is not obligated to furnish, support, or make any
+* further information, software, technical information, know-how, or show-how
+* available to you.  Additionally, AMD retains the right to modify the
+* Materials at any time, without notice, and is not obligated to provide such
+* modified Materials to you.
+*
+* U.S. GOVERNMENT RESTRICTED RIGHTS: The Materials are provided with
+* "RESTRICTED RIGHTS." Use, duplication, or disclosure by the Government is
+* subject to the restrictions as set forth in FAR 52.227-14 and
+* DFAR252.227-7013, et seq., or its successor.  Use of the Materials by the
+* Government constitutes acknowledgement of AMD's proprietary rights in them.
+*
+* EXPORT ASSURANCE:  You agree and certify that neither the Materials, nor any
+* direct product thereof will be exported directly or indirectly, into any
+* country prohibited by the United States Export Administration Act and the
+* regulations thereunder, without the required authorization from the U.S.
+* government nor will be used for any purpose prohibited by the same.
+* ***************************************************************************
+*
+*/
+
+  //-----------------------------------------------------------------
+  // Transfer data
+
+
+  //-----------------------------------------------------------------
+
+  // Current agregated currnet speed
+  Name (PcieCurrentSpeed, 0)
+  // Current agregated target speed
+  Name (PcieTargetSpeed, 0)
+  // Special request for low or high speed
+  Name (PsppOverrideSpeed, 0)
+  // PSPP status
+  Name (PsppStatus, 0)
+  // PSPP ACDC override
+  Name (PsppAcDcOverride, 0xff)
+  
+  Name (ForceSpeedChange, 0)
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  PSPP performance request handler
+   *
+   *  Arg0 - performance request buffer
+   *
+   */
+  Method (procPsppPerfRequest, 1) {
+    Store (Buffer (256) {}, Local7)
+    CreateWordField (Local7, 0x0, varReturnBufferLength)
+    Store (3, varReturnBufferLength)
+    CreateByteField (Local7, 0x2, varReturnStatus)
+    Store (1, varReturnStatus)
+    if (LEqual (PsppPolicy, PSPP_POLICY_PERFORMANCE)) {
+      ALIB_DEBUG ("pspp perf 0 - exit")
+      Store (2, varReturnStatus)
+      return (Local7)
+    }
+    if (LEqual (PsppPolicy, FALSE)) {
+      ALIB_DEBUG ("pspp off 0 - exit")
+      Store (1, varReturnStatus)
+      return (Local7)
+    }
+    procPsppProcessPerfRequest (Arg0)
+    if (LNotEqual (PsppStatus, PSPP_START)) {
+      return (Local7)
+    }
+    procPsppProcessState ()
+    Store (2, varReturnStatus)
+    return (Local7)
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  PSPP AC/DC event handler
+   *
+   *
+   */
+  Method (procPsppAcDc, 0) {
+    if (LLessEqual (PsppPolicy, PSPP_POLICY_PERFORMANCE)) {
+      return (0)
+    }
+    if (LNotEqual (PsppStatus, PSPP_START)) {
+      return (0)
+    }
+    procPsppProcessState ()
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  PSPP hook for sleep
+   *
+   *  Arg0 - sleep state
+   *
+   */
+  Method (procPsppSleep, 1) {
+    if (LEqual (Arg0, 3)) {
+      Store (0, PcieCurrentSpeed)
+//      procPsppManage (PSPP_STOP)
+    }
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  PSPP hook for wake
+   *
+   * Arg0 - sleep state
+   *
+   */
+  Method (procPsppWake, 1) {
+
+    Store (TRUE, ForceSpeedChange)
+
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Start/stop PSPP managment
+   *
+   *
+   */
+  Method (procPsppManage, 1) {
+    ALIB_DEBUG (Concatenate (" PsppManage [Status] ", ToHexString (Arg0), ADBG))
+    Store (Arg0, PsppStatus)
+    if (LLessEqual (PsppPolicy, PSPP_POLICY_PERFORMANCE)) {
+      return (0)
+    }
+    Store (PsppAcDcOverride, Local1)
+    if (LEqual (PsppStatus, PSPP_STOP)) {
+      Store (0, Local0)
+      While (LLess (Local0, NUM_OF_PORTS)) {
+        procPsppSetBootState (Local0)
+        Increment (Local0)
+      }
+      Store (AC, PsppAcDcOverride)
+    }
+    procPsppProcessState ()
+    Store (Local1, PsppAcDcOverride)
+
+    Store (Buffer (256) {}, Local7)
+    Store (3, Index (Local7, 0x0))
+    Store (0, Index (Local7, 0x1))
+    Store (0, Index (Local7, 0x2))
+    return (Local7)
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  AC/DC state for PSPP
+   *
+   *
+   */
+  Method (procPsppGetAcDc, 0) {
+    if (LNotEqual (PsppAcDcOverride, 0xff)) {
+      return (PsppAcDcOverride)
+    }
+    return (AcDc)
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Performance request
+   *
+   *  Arg0 - performance request buffer
+   */
+  Method (procPsppProcessPerfRequest, 1) {
+    CreateWordField (Arg0, 0x2, PerfRequestClientId)
+    CreateWordField (Arg0, 0x4, PerfRequestValidFlag)
+    CreateWordField (Arg0, 0x6, PerfRequestFlag)
+    CreateByteField (Arg0, 0x8, PerfRequestType)
+    CreateByteField (Arg0, 0x9, PerfRequestData)
+
+ALIB_DEBUG (Concatenate (" PerfReq ClientId:", ToHexString (PerfRequestClientId), ADBG))
+ALIB_DEBUG (Concatenate (" PerfReq Type:    ", ToHexString (PerfRequestType), ADBG))
+ALIB_DEBUG (Concatenate (" PerfReq Data:    ", ToHexString (PerfRequestData), ADBG))
+
+    //
+    // Loop through all ports to determine destination of the request
+    //
+    Store (0, Local0)
+    while (LLess (Local0, NUM_OF_PORTS)) {
+      if (LEqual (procPsppIsPortChild (Local0, PerfRequestClientId), TRUE)) {
+        if (LEqual (And (PerfRequestValidFlag, PerfRequestFlag), 0x1)) {
+          Store (procPsppGetMaxPortSpeed (Local0), Local1 )
+          procPsppSetPortRequest (Local0, Local1)
+        } else {
+          procPsppSetPortRequest (Local0, PerfRequestData)
+        }
+        break
+      }
+      Increment (Local0)
+    }
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Get agregated max target speed
+   *
+   *  Initialize  PcieTargetSpeed
+   */
+  Method (procPsppGetGlobalTargetSpeed, 0) {
+    //
+    // Loop through all ports to determine aggregated  target port speed
+    //
+    Store (GEN1, PcieTargetSpeed)
+    Store (0, Local0)
+    while (LLess (Local0, NUM_OF_PORTS)) {
+      Store (procPsppGetPortTargetSpeed (Local0), Local1)
+      if (LGreater (Local1, PcieTargetSpeed)) {
+        Store (Local1, PcieTargetSpeed)
+      }
+      Increment (Local0)
+    }
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Check if there is request to globally override speed
+   *
+   *  Initialize  PsppOverrideSpeed
+   */
+  Method (procPsppGetGlobalOverrideSpeed, 0) {
+    //
+    // Loop through all ports to determine aggregated  override speed
+    //
+    Store (0, PsppOverrideSpeed)
+    Store (0, Local0)
+    while (LLess (Local0, NUM_OF_PORTS)) {
+      Store (procPsppGetPortOverrideSpeed (Local0), Local1)
+      if (LGreater (Local1, PsppOverrideSpeed)) {
+        Store (Local1, PsppOverrideSpeed)
+      }
+      Increment (Local0)
+    }
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Evaluate State of entire system
+   *
+   *
+   */
+  Method (procPsppProcessState, 0) {
+    ALIB_DEBUG ("PsppProcessState Enter")
+    //
+    // Check if there is global override requests (gloal override can be low voltage request)
+    //
+    procPsppGetGlobalOverrideSpeed ()
+    ALIB_DEBUG (Concatenate (" Global Override  ", ToHexString (PsppOverrideSpeed), ADBG))
+    //
+    // Determine agreagated max speed PcieTargetSpeed
+    //
+    procPsppGetGlobalTargetSpeed ()
+    ALIB_DEBUG (Concatenate (" Aggregated Target  Speed  ", ToHexString (PcieTargetSpeed),  ADBG))
+    ALIB_DEBUG (Concatenate (" Aggregated Current Speed  ", ToHexString (PcieCurrentSpeed), ADBG))
+    //
+    // PCIe speed change event
+    //
+    if (LNotEqual (PcieTargetSpeed, PcieCurrentSpeed)) {
+      procPcieSpeedChangeEvent (PcieTargetSpeed, PcieCurrentSpeed)
+    }
+    //
+    // Raise voltage
+    //
+    if (LGreater (PcieTargetSpeed, PcieCurrentSpeed)) {
+      GNBSCOPE.procGnbSetPcieVid (PcieTargetSpeed)
+      Store (PcieTargetSpeed, PcieCurrentSpeed)
+    }
+    //
+    // Request target speed
+    //
+    Store (0, Local0)
+    while (LLess (Local0, NUM_OF_PORTS)) {
+      Store (procPsppGetPortTargetSpeed (Local0), Local1)
+      Store (procPsppGetPortCurrentSpeed (Local0), Local2)
+      if (LNotEqual (Local1, Local2)) {
+        procPsppRequestPortSpeed (Local0, Local1)
+      } elseif (LEqual (ForceSpeedChange, TRUE)) {
+        ALIB_DEBUG ("Port speed change forced")
+        procPsppRequestPortSpeed (Local0, Local1)
+      }
+      Increment (Local0)
+    }
+    //
+    // Drop voltage
+    //
+    if (LLess (PcieTargetSpeed, PcieCurrentSpeed)) {
+      GNBSCOPE.procGnbSetPcieVid (PcieTargetSpeed)
+      Store (PcieTargetSpeed, PcieCurrentSpeed)
+    } elseif (LEqual (ForceSpeedChange, TRUE)) {
+      GNBSCOPE.procGnbSetPcieVid (PcieTargetSpeed)
+      Store (PcieTargetSpeed, PcieCurrentSpeed)
+    }
+    Store (FALSE, ForceSpeedChange)
+    ALIB_DEBUG ("PsppProcessState Exit")
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Request port speed
+   *
+   *  Arg0 - port index
+   *  Arg1 - Pcie speed
+   */
+  Method (procPsppRequestPortSpeed, 2) {
+  ALIB_DEBUG (Concatenate (" PsppRequestPortSpeed Port  ", ToHexString (Arg0), ADBG))
+  ALIB_DEBUG (Concatenate ("                     Speed  ", ToHexString (Arg1), ADBG))
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieRequestPortSpeed (Arg1))
+    }
+  #endif
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  get current port speed
+   *
+   *  Arg0 - port index
+   */
+
+  Method (procPsppGetPortCurrentSpeed, 1) {
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+ #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieGetPortCurrentSpeed ())
+    }
+  #endif
+  }
+
+  Method (procPsppGetPortTargetSpeed, 1) {
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieGetPortTargetSpeed ())
+    }
+  #endif
+
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  get speed override if any
+   *
+   *  Arg0 - port index
+   *
+   */
+
+  Method (procPsppGetPortOverrideSpeed, 1) {
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+ #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieGetPortGlobalOverrideSpeed ())
+    }
+  #endif
+ }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Get max port speed regardless of policy and ac/dc
+   *
+   *  Arg0 - port index
+   *
+   */
+  Method (procPsppGetMaxPortSpeed, 1) {
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieGetMaxPortSpeed ())
+    }
+  #endif
+  }
+
+/*----------------------------------------------------------------------------------------*/
+  /**
+   *  get speed override if any
+   *
+   *  Arg0 - port index
+   *  Arg1 - perfrormace request
+   */
+  Method (procPsppSetPortRequest, 2) {
+    ALIB_DEBUG (Concatenate (" PsppSetPortRequest Port  ", ToHexString (Arg0), ADBG))
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieSetPortRequest (Arg1))
+    }
+  #endif
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Check if device child of given port
+   *
+   *  Arg0 - port index
+   *  Arg1 - Endpoint BDF
+   */
+ Method (procPsppIsPortChild, 2) {
+ #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieIsPortChild (Arg1))
+    }
+  #endif
+  }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Resotore port boot state (PCIe speed)
+   *
+   *  Arg0 - port index
+   *
+   */
+
+  Method (procPsppSetBootState, 1) {
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieSetBootState ())
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieSetBootState ())
+    }
+  #endif
+ }
+
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Dump port configuration info
+   *
+   *  Arg0 - port index
+   *
+   */
+ #ifdef DEBUG_OUT
+ Method (procPsppDebugDump, 1) {
+  #ifdef BR0
+    if (LEqual(Arg0, 0)) {
+      return (BR0.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR1
+    if (LEqual(Arg0, 1)) {
+      return (BR1.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR2
+    if (LEqual(Arg0, 2)) {
+      return (BR2.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR3
+    if (LEqual(Arg0, 3)) {
+      return (BR3.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR4
+    if (LEqual(Arg0, 4)) {
+      return (BR4.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR5
+    if (LEqual(Arg0, 5)) {
+      return (BR5.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR6
+    if (LEqual(Arg0, 6)) {
+      return (BR6.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR7
+    if (LEqual(Arg0, 7)) {
+      return (BR7.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR8
+    if (LEqual(Arg0, 8)) {
+      return (BR8.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR9
+    if (LEqual(Arg0, 9)) {
+      return (BR9.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR10
+    if (LEqual(Arg0, 10)) {
+      return (BR10.procPcieDebugDump ())
+    }
+  #endif
+  #ifdef BR11
+    if (LEqual(Arg0, 11)) {
+      return (BR11.procPcieDebugDump ())
+    }
+  #endif
+ }
+ #endif

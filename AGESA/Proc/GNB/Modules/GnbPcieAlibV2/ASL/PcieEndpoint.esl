@@ -1,0 +1,171 @@
+/**
+ * @file
+ *
+ * ALIB ASL library
+ *
+ *
+ *
+ * @xrefitem bom "File Content Label" "Release Content"
+ * @e project:     AGESA
+ * @e sub-project: GNB
+ * @e \$Revision: 61089 $   @e \$Date: 2011-10-31 10:31:02 -0700 (Mon, 31 Oct 2011) $
+ *
+ */
+/*
+*****************************************************************************
+*
+* Copyright 2008 - 2014 ADVANCED MICRO DEVICES, INC.  All Rights Reserved.
+*
+* AMD is granting you permission to use this software (the Materials)
+* pursuant to the terms and conditions of your Software License Agreement
+* with AMD.  This header does *NOT* give you permission to use the Materials
+* or any rights under AMD's intellectual property.  Your use of any portion
+* of these Materials shall constitute your acceptance of those terms and
+* conditions.  If you do not agree to the terms and conditions of the Software
+* License Agreement, please do not use any portion of these Materials.
+*
+* CONFIDENTIALITY:  The Materials and all other information, identified as
+* confidential and provided to you by AMD shall be kept confidential in
+* accordance with the terms and conditions of the Software License Agreement.
+*
+* LIMITATION OF LIABILITY: THE MATERIALS AND ANY OTHER RELATED INFORMATION
+* PROVIDED TO YOU BY AMD ARE PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED
+* WARRANTY OF ANY KIND, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+* MERCHANTABILITY, NONINFRINGEMENT, TITLE, FITNESS FOR ANY PARTICULAR PURPOSE,
+* OR WARRANTIES ARISING FROM CONDUCT, COURSE OF DEALING, OR USAGE OF TRADE.
+* IN NO EVENT SHALL AMD OR ITS LICENSORS BE LIABLE FOR ANY DAMAGES WHATSOEVER
+* (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, BUSINESS
+* INTERRUPTION, OR LOSS OF INFORMATION) ARISING OUT OF AMD'S NEGLIGENCE,
+* GROSS NEGLIGENCE, THE USE OF OR INABILITY TO USE THE MATERIALS OR ANY OTHER
+* RELATED INFORMATION PROVIDED TO YOU BY AMD, EVEN IF AMD HAS BEEN ADVISED OF
+* THE POSSIBILITY OF SUCH DAMAGES.  BECAUSE SOME JURISDICTIONS PROHIBIT THE
+* EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES,
+* THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+*
+* AMD does not assume any responsibility for any errors which may appear in
+* the Materials or any other related information provided to you by AMD, or
+* result from use of the Materials or any related information.
+*
+* You agree that you will not reverse engineer or decompile the Materials.
+*
+* NO SUPPORT OBLIGATION: AMD is not obligated to furnish, support, or make any
+* further information, software, technical information, know-how, or show-how
+* available to you.  Additionally, AMD retains the right to modify the
+* Materials at any time, without notice, and is not obligated to provide such
+* modified Materials to you.
+*
+* U.S. GOVERNMENT RESTRICTED RIGHTS: The Materials are provided with
+* "RESTRICTED RIGHTS." Use, duplication, or disclosure by the Government is
+* subject to the restrictions as set forth in FAR 52.227-14 and
+* DFAR252.227-7013, et seq., or its successor.  Use of the Materials by the
+* Government constitutes acknowledgement of AMD's proprietary rights in them.
+*
+* EXPORT ASSURANCE:  You agree and certify that neither the Materials, nor any
+* direct product thereof will be exported directly or indirectly, into any
+* country prohibited by the United States Export Administration Act and the
+* regulations thereunder, without the required authorization from the U.S.
+* government nor will be used for any purpose prohibited by the same.
+* ***************************************************************************
+*
+*/
+
+// Get Cap
+  Method (procPcieEpGetCap, 2) {
+    //Arg0 - func
+    //Arg1 - cap
+    if (LEqual (procPcieEpPciDwRd (Arg0, 0), 0xffffffff)) {
+      return (0)
+    }
+    Store (procPcieEpPciDwRd (Arg0, 0x34), Local0)
+    while (TRUE) {
+      Store (procPcieEpPciDwRd (Arg0, And (Local0, 0xff)), Local1)
+      if (LEqual (And (Local1, 0xff), Arg1)) {
+        return (And (Local0, 0xff))
+      }
+      And (ShiftRight (Local1, 8), 0xff, Local0)
+      if (LEqual(local0, 0)) {
+        return (Local0)
+      }
+    }
+  }
+
+ Name (AESP, Package(8) { 0, 0, 0, 0, 0, 0, 0, 0})
+  /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Control ASPM on EP
+   *
+   *  Arg0 -  DISABLE/ENABLE
+   */ 
+  Method (procPcieEpAspm, 1) {
+    ALIB_DEBUG ("PcieEpAspm Enter")
+    Store (0, Local0)
+    if (LNotEqual (procPcieEpPciDwRd (Local0, 0), 0xffffffff)) {
+      And(procPcieEpPciDwRd (Local0, 0x8), 0x80, Local1)
+      if (LEqual (Local1, 0x80)) {
+        Store (7, Local7)
+      } else {
+        Store (0, Local7)
+      }
+      while (LLessEqual (Local0, Local7)) {
+        Store (procPcieEpGetCap (Local0, 0x10), Local1)
+        if (LEqual (Local1, 0x00)) {
+          Increment (Local0)
+          continue
+        }
+        if (LEqual (Arg0, DISABLE)) {
+          Store (procPcieEpPciDwRd (Local0, Add (Local1, 0x10)), Local2)
+          procPcieEpPciDwWr (Local0, Add (Local1, 0x10), And (Local2, Not (0x3)))
+          Store (Local2, Index (AESP, Local0))
+        } else {
+          Store (DerefOf(Index (AESP, Local0)), Local2)
+          procPcieEpPciDwWr (Local0, Add (Local1, 0x10), Local2)
+        }
+        Increment (Local0)
+      }
+    } else {
+      ALIB_DEBUG ("Endpoint not present")
+    }
+    ALIB_DEBUG ("PcieEpAspm Exit")
+  }
+
+ /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Write PCI config register through MMIO
+   *
+   *  Arg0 - Func
+   *  Arg1 - Register offset
+   *  Arg2 - Value
+   */
+
+  Method (procPcieEpPciDwWr, 3, Serialized) {
+    Add (AGRB, ShiftLeft (bfSecondaryBus, 20), Local0)
+    Add (Local0, ShiftLeft (Arg0, 12), Local0)
+    Add (Local0, Arg1, Local0)
+    OperationRegion(ADRB, SystemMemory, Local0, 0x4)
+      Field(ADRB, DWordAcc, NoLock, Preserve) {
+        Offset (0x0),
+        ADRR, 32,
+      }
+    Store (Arg2, ADRR)
+  }
+
+ /*----------------------------------------------------------------------------------------*/
+  /**
+   *  Write PCI config register through MMIO
+   *
+   *  Arg0 - Func
+   *  Arg1 - Register offset
+   */
+
+  Method (procPcieEpPciDwRd, 2, Serialized) {
+    Add (AGRB, ShiftLeft (bfSecondaryBus, 20), Local0)
+    Add (Local0, ShiftLeft (Arg0, 12), Local0)
+    Add (Local0, Arg1, Local0)
+    OperationRegion(ADRB, SystemMemory, Local0, 0x4)
+      Field(ADRB, DWordAcc, NoLock, Preserve) {
+        Offset (0x0),
+        ADRR, 32,
+      }
+    return (ADRR)
+  }
+

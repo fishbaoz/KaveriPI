@@ -1,0 +1,247 @@
+/* $NoKeywords:$ */
+/**
+ * @file
+ *
+ * MEMORY SMM Library
+ *
+ *
+ *
+ * @xrefitem bom "File Content Label" "Release Content"
+ * @e project:      AMD Memory Smm Library
+ * @e sub-project:  Library
+ * @e \$Revision: 281181 $   @e \$Date: 2013-12-18 02:18:55 -0600 (Wed, 18 Dec 2013) $
+ *
+ */
+/*
+*****************************************************************************
+*
+* Copyright 2008 - 2014 ADVANCED MICRO DEVICES, INC.  All Rights Reserved.
+*
+* AMD is granting you permission to use this software (the Materials)
+* pursuant to the terms and conditions of your Software License Agreement
+* with AMD.  This header does *NOT* give you permission to use the Materials
+* or any rights under AMD's intellectual property.  Your use of any portion
+* of these Materials shall constitute your acceptance of those terms and
+* conditions.  If you do not agree to the terms and conditions of the Software
+* License Agreement, please do not use any portion of these Materials.
+*
+* CONFIDENTIALITY:  The Materials and all other information, identified as
+* confidential and provided to you by AMD shall be kept confidential in
+* accordance with the terms and conditions of the Software License Agreement.
+*
+* LIMITATION OF LIABILITY: THE MATERIALS AND ANY OTHER RELATED INFORMATION
+* PROVIDED TO YOU BY AMD ARE PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED
+* WARRANTY OF ANY KIND, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+* MERCHANTABILITY, NONINFRINGEMENT, TITLE, FITNESS FOR ANY PARTICULAR PURPOSE,
+* OR WARRANTIES ARISING FROM CONDUCT, COURSE OF DEALING, OR USAGE OF TRADE.
+* IN NO EVENT SHALL AMD OR ITS LICENSORS BE LIABLE FOR ANY DAMAGES WHATSOEVER
+* (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, BUSINESS
+* INTERRUPTION, OR LOSS OF INFORMATION) ARISING OUT OF AMD'S NEGLIGENCE,
+* GROSS NEGLIGENCE, THE USE OF OR INABILITY TO USE THE MATERIALS OR ANY OTHER
+* RELATED INFORMATION PROVIDED TO YOU BY AMD, EVEN IF AMD HAS BEEN ADVISED OF
+* THE POSSIBILITY OF SUCH DAMAGES.  BECAUSE SOME JURISDICTIONS PROHIBIT THE
+* EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES,
+* THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+*
+* AMD does not assume any responsibility for any errors which may appear in
+* the Materials or any other related information provided to you by AMD, or
+* result from use of the Materials or any related information.
+*
+* You agree that you will not reverse engineer or decompile the Materials.
+*
+* NO SUPPORT OBLIGATION: AMD is not obligated to furnish, support, or make any
+* further information, software, technical information, know-how, or show-how
+* available to you.  Additionally, AMD retains the right to modify the
+* Materials at any time, without notice, and is not obligated to provide such
+* modified Materials to you.
+*
+* U.S. GOVERNMENT RESTRICTED RIGHTS: The Materials are provided with
+* "RESTRICTED RIGHTS." Use, duplication, or disclosure by the Government is
+* subject to the restrictions as set forth in FAR 52.227-14 and
+* DFAR252.227-7013, et seq., or its successor.  Use of the Materials by the
+* Government constitutes acknowledgement of AMD's proprietary rights in them.
+*
+* EXPORT ASSURANCE:  You agree and certify that neither the Materials, nor any
+* direct product thereof will be exported directly or indirectly, into any
+* country prohibited by the United States Export Administration Act and the
+* regulations thereunder, without the required authorization from the U.S.
+* government nor will be used for any purpose prohibited by the same.
+* ***************************************************************************
+*
+*/
+
+#include "MemSmmLib.h"
+#include "CpuFuncs.h"
+
+#define FILECODE UEFI_SMM_MEMSMMLIB_MEMSMMLIB_FILECODE
+
+
+UINT64    mMmioBase = 0;
+
+/*----------------------------------------------------------------------------------------*/
+/**
+ *  LibAgesaSmmMemRead
+ *  Description
+ *      SMM Memory Read Access
+ *
+ * @param[in]       SmmIo           Pointer to SMM CPU IO interface
+ * @param[in]       AccessWidth     Access width
+ * @param[in]       Address         Memory address
+ * @param[out]      Value           Pointer to data buffer
+ *
+ */
+/*----------------------------------------------------------------------------------------*/
+VOID
+LibAgesaSmmMemRead (
+  IN       EFI_SMM_CPU_IO_INTERFACE    *SmmIo,
+  IN       EFI_SMM_IO_WIDTH            AccessWidth,
+  IN       UINT64                      Address,
+     OUT   VOID                        *Value
+  )
+{
+  SmmIo->Mem.Read (
+                   SmmIo,
+                   AccessWidth,
+                   Address,
+                   1,
+                   Value
+                   );
+}
+
+/*----------------------------------------------------------------------------------------*/
+/**
+ *  LibAgesaSmmMemWrite
+ *  Description
+ *      SMM Memory Write
+ *
+ * @param[in]       SmmIo           Pointer to SMM CPU IO interface
+ * @param[in]       AccessWidth     Access width
+ * @param[in]       Address         Memory address
+ * @param[out]      Value           Pointer to data buffer
+ *
+ */
+/*----------------------------------------------------------------------------------------*/
+VOID
+LibAgesaSmmMemWrite (
+  IN       EFI_SMM_CPU_IO_INTERFACE    *SmmIo,
+  IN       EFI_SMM_IO_WIDTH            AccessWidth,
+  IN       UINT64                      Address,
+  IN       VOID                        *Value
+  )
+{
+  SmmIo->Mem.Write (
+                   SmmIo,
+                   AccessWidth,
+                   Address,
+                   1,
+                   Value
+                   );
+}
+
+
+/*----------------------------------------------------------------------------------------*/
+/**
+ *  LibAgesaSmmIoRead
+ *  Description
+ *      SMM I/O Read Access
+ *
+ * @param[in]       SmmIo           Pointer to SMM CPU IO interface
+ * @param[in]       AccessWidth     Access width
+ * @param[in]       Address         IO address
+ * @param[out]      Value           Pointer to data buffer
+ *
+ */
+/*----------------------------------------------------------------------------------------*/
+VOID
+LibAgesaSmmIoRead (
+  IN       EFI_SMM_CPU_IO_INTERFACE    *SmmIo,
+  IN       EFI_SMM_IO_WIDTH            AccessWidth,
+  IN       UINT16                      Address,
+     OUT   VOID                        *Value
+  )
+{
+  SmmIo->Io.Read (
+                   SmmIo,
+                   AccessWidth,
+                   Address,
+                   1,
+                   Value
+                   );
+}
+
+
+/*----------------------------------------------------------------------------------------*/
+/**
+ *  LibAgesaSmmIoWrite
+ *  Description
+ *      SMM I/O Write Access
+ *
+ * @param[in]       SmmIo           Pointer to SMM CPU IO interface
+ * @param[in]       AccessWidth     Access width
+ * @param[in]       Address         IO address
+ * @param[out]      Value           Pointer to data buffer
+ *
+ */
+/*----------------------------------------------------------------------------------------*/
+VOID
+LibAgesaSmmIoWrite (
+  IN       EFI_SMM_CPU_IO_INTERFACE    *SmmIo,
+  IN       EFI_SMM_IO_WIDTH            AccessWidth,
+  IN       UINT64                      Address,
+  IN       VOID                        *Value
+  )
+{
+  SmmIo->Io.Write (
+              SmmIo,
+              AccessWidth,
+              Address,
+              1,
+              Value
+              );
+}
+
+/*----------------------------------------------------------------------------------------*/
+/**
+ *  TranslateSysAddrToCS
+ *  Description
+ *      This function converst the given physical address into DIMM specific info
+ *
+ * @param[in]       AmdDimmInfo       AmdDimmInfo
+ *
+ */
+/*----------------------------------------------------------------------------------------*/
+EFI_STATUS
+TranslateSysAddrToCS (
+  IN  AMD_IDENTIFY_DIMM   *AmdDimmInfo
+  )
+{
+  BOOLEAN   ChipSelectFound;
+
+  ChipSelectFound = FALSE;
+
+  //
+  // Get the MmioBase address to access extended config info
+  //
+  mMmioBase = EfiReadMsr (0xC0010058);
+  mMmioBase &= 0x000000FFFFF00000;
+
+  PlatformTranslateSysAddrToCS (
+      AmdDimmInfo->MemoryAddress,
+      &ChipSelectFound,
+      &AmdDimmInfo->SocketId,
+      &AmdDimmInfo->MemChannelId,
+      &AmdDimmInfo->ChipSelect,
+      &AmdDimmInfo->Bank,
+      &AmdDimmInfo->Row,
+      &AmdDimmInfo->Column
+      );
+
+  AmdDimmInfo->DimmId = AmdDimmInfo->ChipSelect / 2;
+  AmdDimmInfo->ChipSelect %= 2;
+
+  if (!ChipSelectFound) {
+    return EFI_NOT_FOUND;
+  } else {
+    return EFI_SUCCESS;
+  }
+}

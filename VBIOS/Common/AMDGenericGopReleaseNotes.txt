@@ -1,0 +1,390 @@
+=========================== AMD GOP X64 Release Driver Rev.1.54.0.0.0.LibBuildNo:2700. Dec 30 2013.18:11:36 ====================================
+AMD Generic GOP driver release notes
+
+1. Gop Driver Info:
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      95488 (93 KB)
+    GOP Driver Name: AMD GOP X64 Release Driver Rev.1.54.0.0.0.Dec 30 2013.18:11:36
+    GOP AMD_Build          2700
+    GOP AMD_CL             992571
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+2. Major changes:
+- Accomodate new VI code changes (use GfxDMAControl to
+   ClearSurface in VI; SetBiosReservationStartInFB always
+   sets FBRA on top of the FB for VI).
+ - Flush operation in the end of ATIMMRegWrite changed to
+   accomodate for VI register addresses
+ - Replace PciIo.Mem.R/W with CPDMA when we perform
+   Small Blt.
+ - Optimize the Blt code
+ - Update SupportedPciDid (Add Carrizo etc.)
+
+3. Testing environmet
+  System : Kaveri Nallina mobile platform
+  SBIOS : Insyde WBL4101N.ROM
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 101
+  Test
+  content: SCT, AMDGOP, GOPVmodes, Win8
+
+
+============================== AMD GOP X64 Driver Rev.1.53.0.0.0.LibBuildNo:2619.Oct 23 2013.17:03:41 =======================================
+AMD Generic GOP driver release notes
+
+1.Major changes:
+ - Add Regulator functions
+ - Update Supported Device Ids.
+ - Change the way we obtain the PCI BAR info.
+
+2.Testing environmet
+  System : Mullins Larne mobile platform
+  SBIOS : Insyde WBL3731N.ROM
+  GOP   : Generic GOP,
+  Vbios : MullinsGenericVbios.bin, Ver. 016
+  Test
+  content: SCT, AMDGOP, GOPVmodes, Win8
+
+
+============================== AMD GOP X64 Driver Rev.1.52.0.0.0.LibBuildNo:2539.Aug  1 2013.15:41:39 =======================================
+AMD Generic GOP driver release notes
+
+1. Major changes:
+
+Uefi Code Rev.1.52.
+ - Update SupportedDevice Ids.
+ - DFS Bypass feature.
+
+Uefi Code Rev.1.51.
+ - Adjustment in ComponentNameGetControllerName - return EFI_UNSUPPORTED in case GetControllerName is called with irrelevant ControllerHandle.
+
+2. Basic build Information
+GOP binary file name: AMDGenericGop.efi
+Revision: Rev.1.52.0.0.0.
+Built date: Aug  1 2013.15:41:39
+Change List: 936470
+
+3. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+4. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      82944 (81 KB)
+    The Gop driver image has 4 sections.
+    GOP Driver Name: AMD GOP X64 Driver Rev.1.52.0.0.0.LibBuildNo:2539.Aug  1 2013.15:41:39
+    GOP AMD_Build          267852
+    GOP AMD_CL             936470
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+5.Testing environmet
+
+  System : Ballina Kaveri mobile platform
+  SBIOS : Insyde WBL3731N.ROM
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 020
+  Test
+  content: SCT, AMDGOP, GOPVmodes, Win8
+
+
+
+===================================== Rev.1.50.0.15.36.June 14 2013.16:15:09 ==============================================
+AMD Generic GOP driver release notes
+
+Major changes:
+- Gop Driver Clean up - ControllersTable array removed. Update SupportedDevice Ids.
+- EDK2 EFI_FIRMWARE_MANAGEMENT_PROTOCOL.
+- Set EfiDriverDiagnosticTypeCancel = 3, as it is in the new Uefi spec 2.3.
+
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.50.0.15.36
+Built date: June 14 2013.16:15:09
+Change List: 911940
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      75680 (73 KB)
+    The Gop driver image has 4 sections.
+    GOP Driver Name: AMD GOP X64 Release Driver Rev.1.50.0.15.36.May 22 2013.17:32:42
+    GOP AMD_Build          262820
+    GOP AMD_CL             911940
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Larne Kabini mobile platform
+  SBIOS : Insyde WLR3612N
+  GOP   : Generic GOP,
+  Vbios : KabiniGenericVbios.bin, Ver. 103
+  Test
+  content: SCT, AMDGOP, GOPVmodes, Win8
+
+
+===================================== Rev.1.49.0.15.35.May  8 2013.16:34:36 ==============================================
+AMD Generic GOP driver release notes
+
+Major changes:
+- Change GetEdidOverride to comply with the spec. EFI_EDID_OVERRIDE_PROTOCOL_GET_EDID) (..IN EFI_HANDLE *ChildHandle, ..).
+- Remove unnecessary files: AsicOp.h, AsicOperation.c, DeviceOperation.c, SerialDebug.c/h.
+- Add Diagnostic Protocol.
+
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.49.0.15.35
+Built date: May  8 2013.16:34:36
+Change List: 907100
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      75680 (73 KB)
+    The Gop driver image has 4 sections.
+    GOP Driver Name: AMD GOP X64 Driver Rev.1.49.0.15.35.LibBuildNo:2451.May  8 2013.16:34:36
+    GOP AMD_Build          261798
+    GOP AMD_CL             907100
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Ballina Kaveri mobile platform
+  SBIOS : Insyde WBL3508.ROM
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 019
+  Test
+  content: SCT, AMDGOP, GOPVmodes
+
+
+===================================== Rev.1.48.0.15.33.Apr  1 2013.15:17:35 ==============================================
+AMD Generic GOP driver release notes
+
+Major changes:
+
+CL892929
+EPR #010003 - 15.33. AmdGop Rev. 1.48:
+- Unload the child protocols when there is ConvRDPToReqDevices Error
+- Copy DPath from lpDeviceContext->lpDispCoreBuffer to FB only if DEBUG_DPATH flag is set
+- Remove ACC_MODE bit set and replace with clear ATOM_VBIOS_RESERVED_AREA_SIGNATURE.
+From Change 892910 in stage.
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.48.0.15.33
+Built date: Apr  1 2013.15:17:35
+Change List: 892957
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      74816 (73 KB)
+    The Gop driver image has 4 sections.
+    GOP Driver Name: AMD GOP X64 Release Driver Rev.1.48.0.15.33.Apr  1 2013.15:17:35
+    GOP AMD_Build          258928
+    GOP AMD_CL             892957
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Bantry Kaveri desktop platform
+  SBIOS : Insyde BBT3322A.ROM
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 015
+
+
+
+===================================== 1.46.0.15.32.Mar  6 2013.15:26:23 ==============================================
+
+
+AMD Generic GOP driver release notes
+
+Ver 1.46 with a fixes in for supporting UUNIPHY7.
+CL883388 - [KV][DCE]: Fix a bug for 7th UNIPHY. SYMCLKG is not enable. Fix a bug in GOP case for 7th UNIPHY which DIG_FE_SOURCE_SEL is not set correctly. Review #27913.
+
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.46.0.15.32
+Built date: Mar  6 2013.15:26:23
+Change List: 883388
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      73696 (71 KB)
+    GOP Driver Name:       AMD GOP X64 Release Driver Rev.1.46.0.15.32.
+    GOP AMD_Build          256594
+    GOP AMD_CL             880232
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Simnow  Ver 4.7.2, inter release revision:22812
+  SBIOS : Insyde BallinaX64.bin (GOP and Legacy vbiso )
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 011
+
+
+
+===================================== 1.46.0.15.32.Mar  1 2013.16:48:00 ==============================================
+
+AMD Generic GOP driver release notes
+
+Ver 1.46 with a minor fixes in AcpiSupport
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.46
+Built date: Mar  1 2013.16:48:00
+Change List: 881806
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      73728 (71 KB)
+    GOP Driver Name:       AMD GOP X64 Release Driver Rev.1.46.0.15.32.
+    GOP AMD_Build          256236
+    GOP AMD_CL             880232
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Simnow  Ver 4.7.2, inter release revision:22812
+  SBIOS : Insyde BallinaX64.bin (GOP and Legacy vbiso )
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 009
+
+
+
+===================================== 1.46 =====================================================
+
+AMD Generic GOP driver release notes
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.46
+Built date: Feb 14 2013.14:08:53
+Change List: 875731
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      73632 (71 KB)
+    GOP Driver Name:       AMD GOP X64 Driver Rev.1.46.0.15.32.LibBuildNo:2208.
+    GOP AMD_Build          255137
+    GOP AMD_CL             875731
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Simnow  Ver 4.7.2, inter release revision:22812
+  SBIOS : Insyde BallinaX64.bin (GOP and Legacy vbiso )
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 009
+
+
+
+===================================== 1.45 =====================================================
+
+
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.45
+Built date: 1/17/2013 2:22
+Change List: 865709
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      83072 (81 KB)
+    GOP Driver Name:       AMD GOP X64 Driver Rev.1.45.0.15.31.LibBuildNo:2161
+    GOP AMD_Build          252890
+    GOP AMD_CL             865709
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Simnow  Ver 4.7.2, inter release revision:22812
+  SBIOS : Insyde BallinaX64.bin (GOP and Legacy vbiso )
+  GOP   : Generic GOP,
+  Vbios : KaveriGenericVbios.bin, Ver. 007
+
+
+
+====================================== 1.44 ====================================================
+
+
+GOP binary file name: AMDGenericGop.efi
+Revision: 1.44
+Built date: 12/07/2012 4:20 PM
+Change List: 854126
+
+1. GUID: A8DAFB9B-3529-4e87-8584-ECDB6A5B78B6
+
+
+2. Generate Info for file AMDGenericGop.efi (Gop Driver)
+==========================================
+    Machine type code      X64
+    The GOP Driver is not Authenticode signed.
+    Size Of Gop Image      83008 (81 KB)
+    GOP Driver Name: AMD GOP X64 Driver Rev.1.44.0.15.30.LibBuildNo:2114.Dec  5 2012.15:54:33
+    GOP AMD_Build          249604
+    GOP AMD_CL             854126
+    GOP BIOS_IDTF          0xDEADBEEF
+    GOP Driver does not carry tables!
+
+
+3.Testing environmet
+
+  System : Larne ref board
+  SBIOS : Insyde WLR2C05N.rom
+  GOP   : Generic GOP,
+  Vbios : KabiniGenericVbios.bin, Ver. 022
+  Win8 Pro:  build 9200
+  Win8 inbox driver :
+  Win8 driver : 12.10-121204n-150157E-ATI
+  AMDGop tool : v1.0
+  SCT tool : UEFI 2.3 Shell Certification Test,
+  Display device : CRT,DP,LCD,DVI

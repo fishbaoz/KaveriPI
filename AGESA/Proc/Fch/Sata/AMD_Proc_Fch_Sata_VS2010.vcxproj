@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Debug|Win32">
+			<Configuration>Debug</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|Win32">
+			<Configuration>Release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals" Condition="1==1">
+		<RootNamespace>AMD_Proc_Fch_Sata_VS2010</RootNamespace>
+		<ProjectGuid>{A477E88E-9E0A-4351-BE7B-7F0B2EA8108C}</ProjectGuid>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<ImportGroup Label="ExtensionSettings">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+	</ImportGroup>
+	<PropertyGroup Label="UserMacros" Condition="2==2"/>
+	<PropertyGroup Condition="3==3">
+		<_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+	</PropertyGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)Proc\Fch\";"$(AGESA_ROOT)";"$(AGESA_ROOT)Lib\";"$(AGESA_ROOT)Proc\Fch\Common\";"$(AGESA_ROOT)Proc\Common\";"$(AGESA_ROOT)Include\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)Proc\Fch\";"$(AGESA_ROOT)";"$(AGESA_ROOT)Lib\";"$(AGESA_ROOT)Proc\Fch\Common\";"$(AGESA_ROOT)Proc\Common\";"$(AGESA_ROOT)Include\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemGroup Label="Sources">
+		<ClCompile Include=".\AhciEnv.c"/>
+		<ClCompile Include=".\AhciLate.c"/>
+		<ClCompile Include=".\AhciLib.c"/>
+		<ClCompile Include=".\AhciMid.c"/>
+		<ClCompile Include=".\Ide2AhciEnv.c"/>
+		<ClCompile Include=".\Ide2AhciLate.c"/>
+		<ClCompile Include=".\Ide2AhciLib.c"/>
+		<ClCompile Include=".\Ide2AhciMid.c"/>
+		<ClCompile Include=".\RaidEnv.c"/>
+		<ClCompile Include=".\RaidLate.c"/>
+		<ClCompile Include=".\RaidLib.c"/>
+		<ClCompile Include=".\RaidMid.c"/>
+		<ClCompile Include=".\SataEnv.c"/>
+		<ClCompile Include=".\SataEnvLib.c"/>
+		<ClCompile Include=".\SataIdeEnv.c"/>
+		<ClCompile Include=".\SataIdeLate.c"/>
+		<ClCompile Include=".\SataIdeLib.c"/>
+		<ClCompile Include=".\SataIdeMid.c"/>
+		<ClCompile Include=".\SataLate.c"/>
+		<ClCompile Include=".\SataLib.c"/>
+		<ClCompile Include=".\SataMid.c"/>
+		<ClCompile Include=".\SataReset.c"/>
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+	<ImportGroup Label="ExtensionTargets">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+	</ImportGroup>
+</Project>

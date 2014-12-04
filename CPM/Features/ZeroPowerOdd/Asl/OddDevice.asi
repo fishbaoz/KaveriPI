@@ -1,0 +1,200 @@
+/* $NoKeywords:$ */
+/**
+ * @file
+ *
+ * AMD CPM Zero Power Odd SSDT Table
+ *
+ * Contains CPM code to provide ASL code support for Zero Power Odd.
+ *
+ * @xrefitem bom "File Content Label" "Release Content"
+ * @e project:      CPM
+ * @e sub-project:  ZeroPwrOdd
+ * @e \$Revision: 284516 $   @e \$Date: 2014-02-11 15:49:12 -0600 (Tue, 11 Feb 2014) $
+ *
+ */
+/*****************************************************************************
+ *
+ * Copyright 2012 - 2014 ADVANCED MICRO DEVICES, INC.  All Rights Reserved.
+ *
+ * AMD is granting you permission to use this software (the Materials)
+ * pursuant to the terms and conditions of your Software License Agreement
+ * with AMD.  This header does *NOT* give you permission to use the Materials
+ * or any rights under AMD's intellectual property.  Your use of any portion
+ * of these Materials shall constitute your acceptance of those terms and
+ * conditions.  If you do not agree to the terms and conditions of the Software
+ * License Agreement, please do not use any portion of these Materials.
+ *
+ * CONFIDENTIALITY:  The Materials and all other information, identified as
+ * confidential and provided to you by AMD shall be kept confidential in
+ * accordance with the terms and conditions of the Software License Agreement.
+ *
+ * LIMITATION OF LIABILITY: THE MATERIALS AND ANY OTHER RELATED INFORMATION
+ * PROVIDED TO YOU BY AMD ARE PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED
+ * WARRANTY OF ANY KIND, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+ * MERCHANTABILITY, NONINFRINGEMENT, TITLE, FITNESS FOR ANY PARTICULAR PURPOSE,
+ * OR WARRANTIES ARISING FROM CONDUCT, COURSE OF DEALING, OR USAGE OF TRADE.
+ * IN NO EVENT SHALL AMD OR ITS LICENSORS BE LIABLE FOR ANY DAMAGES WHATSOEVER
+ * (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, BUSINESS
+ * INTERRUPTION, OR LOSS OF INFORMATION) ARISING OUT OF AMD'S NEGLIGENCE,
+ * GROSS NEGLIGENCE, THE USE OF OR INABILITY TO USE THE MATERIALS OR ANY OTHER
+ * RELATED INFORMATION PROVIDED TO YOU BY AMD, EVEN IF AMD HAS BEEN ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGES.  BECAUSE SOME JURISDICTIONS PROHIBIT THE
+ * EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES,
+ * THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+ *
+ * AMD does not assume any responsibility for any errors which may appear in
+ * the Materials or any other related information provided to you by AMD, or
+ * result from use of the Materials or any related information.
+ *
+ * You agree that you will not reverse engineer or decompile the Materials.
+ *
+ * NO SUPPORT OBLIGATION: AMD is not obligated to furnish, support, or make any
+ * further information, software, technical information, know-how, or show-how
+ * available to you.  Additionally, AMD retains the right to modify the
+ * Materials at any time, without notice, and is not obligated to provide such
+ * modified Materials to you.
+ *
+ * U.S. GOVERNMENT RESTRICTED RIGHTS: The Materials are provided with
+ * "RESTRICTED RIGHTS." Use, duplication, or disclosure by the Government is
+ * subject to the restrictions as set forth in FAR 52.227-14 and
+ * DFAR252.227-7013, et seq., or its successor.  Use of the Materials by the
+ * Government constitutes acknowledgement of AMD's proprietary rights in them.
+ *
+ * EXPORT ASSURANCE:  You agree and certify that neither the Materials, nor any
+ * direct product thereof will be exported directly or indirectly, into any
+ * country prohibited by the United States Export Administration Act and the
+ * regulations thereunder, without the required authorization from the U.S.
+ * government nor will be used for any purpose prohibited by the same.
+ ******************************************************************************
+ */
+
+Method (_ADR)
+{
+    If (LAnd(Lor(CpmIsWin8(),CpmIsLinux()), And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 1))) {          // If CpmIsWin8orAbove and ZeroPowerOdd enable
+        Return(Add(Multiply(CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddSataPortId), 0x10000), 0x0000FFFF)) // New AHCI addressing scheme
+    } Else {
+        Return(CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddSataPortId))
+    }
+}
+
+Name(ODPS, 0)
+Name(ODDB, 0)                                           // ODD boot up Flag
+Name(WDSW, 0x01)
+
+
+Method(_INI)
+{
+    If( LNotEqual(PBAA(), 0) )
+    {
+        If (LNotEqual(CpmReadMem32(PBAA(), Add(0x129, Multiply(CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddSataPortId), 0x80)), 0, 4), 0))
+        {
+            Store(0x1, ODDB)
+        }
+    }
+}
+
+Method(ZSTA, 0)
+{
+    If (And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 1))                      // ODD Zero Power enabled
+    {
+        If (And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 2))                  // ODD Hotplug
+        {
+            If (CpmReadGevent (CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddEventPin2)))
+            {
+                Return(0x0)
+            }
+            Else
+            {
+                If (And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 4))
+                {
+                    Store(0x1, ODDB)                    // pretend that _PS0 is called if boot without PS0
+                }
+                Return(0xF)
+            }
+        }
+        Else
+        {
+            If (And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 4))
+            {
+                Store(0x1, ODDB)                        // pretend that _PS0 is called if boot without PS0
+            }
+            Return(0xF)
+        }
+    }
+    Else                                                // ODD Zero Power disabled
+    {
+        Return(0x0)
+    }
+}
+
+Method(_PSC)
+{
+    If (CpmOddStatus) {
+        Return (0)
+    } Else {
+        Return (3)
+    }
+}
+
+Method(_PS0)
+{
+    If(LNot(LAnd(And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 2), CpmReadGevent (CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddEventPin2)))))
+    {
+        CpmSetPostCode (0xDF00)
+        If(And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 1))
+        {
+            If(LOr(LEqual(ODDB, 0x1),                       // Second or latter time call _PS0, or First time call and ODD connected
+                   LAnd(LEqual(ODDB, 0x0), LNotEqual(STPM, 0x0))))
+            {
+                STPT(1)                                     // Enable Port
+                Sleep(40)
+                CpmSetDevicePower(CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddDeviceId), 1)
+                Store(1, CpmOddStatus)
+                Sleep(40)
+            }
+        }
+        Store(0x1, ODDB)                                // _PS0 is called
+        Store(0x0, ODPS)
+    }
+}
+
+Method(_PS3)
+{
+    CpmSetPostCode (0xDF03)
+    If(And(CpmReadTable(CpmMainTable, CpmZeroPowerOddEn), 1))
+    {
+        If (LEqual(WDSW, 0x01))
+        {
+            Sleep(40)                                       // Power Off ODD
+            CpmSetDevicePower(CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddDeviceId), 0)
+            Store(0, CpmOddStatus)
+            Sleep(40)
+            STPT(0)                                         // Disable Port
+            // Switch plug event detection polarity according to current input level.
+            CpmWriteGeventTriggerType (CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddEventPin1), Xor(CpmReadGevent (CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddEventPin1)), 1))
+        }
+    }
+    Store(0x1, ODDB)                                        // _PS0 needs to be called
+    Store(0x3, ODPS)
+}
+
+Method(XEJ0, 1)
+{
+    _PS3()
+    STPP(0)
+}
+
+Device(ODD)
+{
+    Name(_ADR, 0x00000000)
+    Method(_RMV, 0)                                     // Set Device Removable icon for MS hot-fix KB950186 Vista 
+    {
+        Return(0x01)
+    }
+    
+     Method(_EJ0, 1)
+    {
+        CpmSetDevicePower(CpmReadTable(CpmZeroPowerOddTable, CpmZeroPowerOddDeviceId), 0)
+        Store(0, CpmOddStatus)
+    }
+}

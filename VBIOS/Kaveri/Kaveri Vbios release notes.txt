@@ -1,0 +1,338 @@
+============================ 102 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 102
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.102    02/03/14,12:14:55 1003805@VER015.041.000.002.000000  ATOMBuild #285239
+
+Changes include:
+CL1003465 - EPR #392854 - [KV][Realtek][Kaveri Mobile] Triggering a TDR on LVDS REALTEK causes screen to go blank.
+
+============================ 101 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 101
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.101    01/03/14,17:42:37 993494@VER015.041.000.001.000000  ATOMBuild #282316
+
+Changes include:
+CL993491 - OBS428719 - eDP backlight sequence T15&T16 issue on Ballina.
+
+============================ 100 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 100
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.100    12/05/13,16:27:24 984074@15.41.0.0  ATOMBuild #279841
+
+Changes include:
+no change, update the Vbios bring up revisio number 0xx to production revision number 100.
+
+
+============================ 024 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 024
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.024    10/02/13,12:47:44 958765@15.40.0.0  ATOMBuild #273214
+
+Changes include:
+1. CL958759 - fix to EPR #384829 - [LINUX][Kaveri] Screen remains black at starting X server without DM or WM or any other open X clients
+2. CL958758 - EPR #010003 - [APU][DCE][BL]IOIC 3.0 - ETW analysis for DAL staging driver--KV
+   Driver reports a 18ms execution time of the back light on, revise the eDP back light on sequence to reduce the BL_ON delay execution time less than 1 ms.
+
+
+============================ 023 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 023
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.023   09/20/13,14:30:33 954270@15.39.0.0  ATOMBuild #272236
+
+Changes include:
+CL954270 - KV HDMI Coherent mode failed to light up.
+to fix: set Div2Desel@DDI_PHY0_ROPLL_PciPllFreqMode_RO1 to 0 to 0, the panel came back and symclk is also correct.
+
+
+============================ 022 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 022
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.022  09/09/13,10:29:24 949792@15.39.0.0  ATOMBuild #271094
+
+Changes include:
+CL949792 -  [KV][PHY] Kaveri HDMI Swing
+In BKDG Ver1.07, the setting for D0F0xE4_x0[220,123:120]_000[2:1] Phy Impedance Control
+(called PCIE_WRAPPER:XXX_PHY0_CPD_IMPSUB0   in the reg spec} was updated in Table 137.
+
+Table 137: Recommended Ron settings
+                       D0F0xE4_x0[220,123:120]_000[2:1]    D0F0xE4_x0[220,123:120]_000[2:1]
+Link Type              RonCtlFuseOverride                         RonCtl                            RonIndex
+Display Port           0                                          0                                 0
+HDMI                   1                                          3                                 3
+DVI                    0                                          0                                 0
+PCIe                   0                                          0                                 0
+
+Vbios  makes teh change accordingly.
+
+
+============================ 021 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 021
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.021  08/21/13,17:44:50 943459@15.39.0.0  ATOMBuild #269284
+
+Changes include:
+CL943329 -  [KV][PHY]OBS412074  [KV] HDMI 2560x1600x60Hz, 24bpp, pixel clock 268.5MHz could not light up.
+
+
+============================ 020 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 020
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.020  08/01/13,16:19:07 936470@15.38.0.0  ATOMBuild #267852
+
+Changes include:
+CL907462 - [KV][ML][DCE]: enable TMDS/HDMI coherent mode by default.
+
+CL910491 - [KV][DP PHY]OBS400540: Kaveri Ballina DP3 Eye Diagram Failure
+
+CL929429 - [KV][DCE][DESPREAD] conditionally enable/disable De-Spread spectrum on  DP DTO
+
+CL932187/932413/934630/934772/936009/
+ - [KV][DCE][DFS BYPASS]DFS Bypass support. if pixel clock < 100Mhz and LCD only, program DispCLK/DpRefClk to 100MHz and bypass DispCLK/DpRefCLK. Message SMU to set status register for DispCLK/DpRefCLK Bypass
+
+CL936051  - [APU]For eDPToLVDS translator chip such as Realtek RTD23xx, the power sequence is controlled by by external chip, GPU should not generate extra VCC power off to VCC power on delay.
+
+
+CL935943 - [KV][DPPHY]update DP PHY settings to DPSettings_7-30.xlsx
+Conditions			D0F0xE4_x0[220,123:120]_[7:6,3:0][8,0]6
+Link Type	Pre-Emphasis	Swing	DeEmphGen1Nom	TxMarginNom
+Display Port	Level0	        Level 3	0	 	0
+				Level 2	0		25
+				Level 1	0		58
+				Level 0	0		75
+		Level 1		Level 2	40		0
+				Level 1	34		24
+				Level 0	25		50
+		Level 2		Level 1	62		0
+				Level 0	46		30
+		Level 3		Level 0	75		0
+
+
+
+============================ 019 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 019
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.019  15.35.0.0@907203  ATOMBuild #261798
+
+Changes include:
+
+CL899798 - VBIOS w/ get rid of power sequence (cpu delays) from BIOS and use the HW state machine for the power down and PWM delays.
+
+CL901876 - OBS397484 :[KV] - BIOS does not provide the right memory type string,KV doesn't support GDDR5 now, no need to reserve a space for memory type dynamic patch. disable the KEY_PATCH_BIOS_MSG_MEMORY_TYPE feature from the KV config file.
+
+CL902661 - [KV/SMU]the parameter of the phy index is not correct.the start address of PCIEPHY_REG_OFFSET is destroyed by CALL_TABLE( SetUniphyInstance )
+
+CL903162 - OBS397476  Kaveri FP3 Ballina - Cannot Change DP Lane Settings, the phy id for PHYA/G violates  the regular rule, use the SmuPGPhyId instead.
+
+CL904378 -  unconditinally request the sMU to turn off the PCIE power gating even if the dig is not active.
+
+CL906450 - Fix to OBS398423:No display out of DP when PCIe PHY powergating is enabled.
+AGESA will completely power off all lanes associated with untrained ports as well as DDI (regardless of dedicated/PGD/PSD/PPD) before passing control to VBIOS.Vbios only needs to change the state of the TX. Essentially there should not be any implementation differences between dedicated and shared DDI.
+
+CL906897 -  For eDPToLVDS translator chip such as Realtek RTD23xx, the power sequence is controlled by by external chip, GPU should not generate extra VCC power off to VCC power on delay.
+
+
+============================ 018 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 018
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.018  15.34.0.0@903314  ATOMBuild #261025
+
+Changes include:
+CL903314 - Fix to OBS397476  Kaveri FP3 Ballina - Cannot Change DP Lane Settings.
+CL902663 - Fix to OBS397484 :[KV] - BIOS does not provide the right memory type string.
+CL902662 - ENH395067 Enable PCIe wrapper/PHY powergating
+
+============================ 017 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 017
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.017  15.34.0.0@899765  ATOMBuild #260253
+
+Changes include:
+CL899765 - Enable DCE POWER GATING.
+
+
+============================ 016 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 016
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.016  15.33.0.0@894393  ATOMBuild #259211
+
+Changes include:
+CL894391 - Enable DP HBR2 settings.
+
+
+============================ 015 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 015
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.015  15.33.0.0@892957  ATOMBuild #258928
+
+no critical change in this release, only sync the source code to the 15.33 release branch.
+
+
+
+============================ 014 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 014
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.014  15.32.1.0@889957  ATOMBuild #258311
+
+Changes include:
+CL889957 -
+1. Enable SMU power gating
+2. program DCP_DEBUG register based on the GD to fix OBS392224-[GNB-DCE] eDP+HDMI causes screen corruption/tearing on pressing the window key.
+
+============================ 013 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 013
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.013  15.32.1.0@885460  ATOMBuild #257110
+
+Changes Include:
+CL885460 - [KV][DCE]:  UNIPHY phy pll clock picker and alternative divider selection alogrithm improvement.
+
+
+
+============================ 012 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 012
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.012  15.32.1.0@883953 ATOMBuild #256748
+
+Changes Include:
+CL883930 - [KV][DCE]: Fix UNIPHYA and UNIPHYG incorrect DDI wrapper offset issue which cause system hang with UNIPHYA or UNIPHYC.
+CL883930 - [KV][DCE]: Fix a bug in UNIPHYT disable sequence.
+
+
+
+============================ 011 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 011
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.011  15.32.1.0@881806 ATOMBuild #256594
+
+Changes Include:
+CL883388 - [KV][DCE]: Fix a bug for 7th UNIPHY. SYMCLKG is not enable. Fix a bug in GOP case for 7th UNIPHY which DIG_FE_SOURCE_SEL is not set correctly. Review #27913.
+
+
+
+============================ 010 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 010
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.010  15.32.1.0@881806 ATOMBuild #256236
+
+Changes Include:
+CL880161 - [KV][SMU] Update DDI power gating message interface, use SMC_MESSAGE_ARG_8 as parameter instead of ixPCIE_PG_ARGS_2, remove PCIE_PHY_GEN_STATUS programming. Review #27654.
+
+CL880152 - [KV/KB][DCE] [g] DP Dell3008 1280x1024 x60 has no display -HW w/a: disable DP_DTO_DS (de spread),
+Review#27510 by Xiong :To fix this issue, it needs h/w workaround. If dpref clk is spreaded, disable DP_DTO_DS (de spread),
+that is, in case ENABLE_DESPREAD_ON_DP_DTO flag = 1,
+     if (dprefclk = spreaded) CRTC_PIXEL_RATE_CNTL.DP_DTO0_DS_DISABLE = 1
+     else CRTC_PIXEL_RATE_CNTL.DP_DTO0_DS_DISABLE = 0
+CL878416 - [KV][VM]: Do not touch DOUT_SCRATCH3[7:6][1:0], those bit are used by driver Virtual Machine feature.  Review #27522.
+
+
+============================ 009 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 009
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.009  15.32@876901 ATOMBuild #255137
+
+Changes Include:
+1. Sync the Kaveri header files to the driver official released verion on 1/29/2013 2:04:53 PM
+   EPR #371256 - [KV] Add Kaveri ASIC register header files.
+   https://codereview.amd.com/go?page=ReviewDisplay&reviewid=26644
+
+
+
+============================ 008 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 008
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.008  15.31@871334 ATOMBuild #254102
+
+Changes Include:
+1. Golden settings finalized.
+2. add three new regsiter settings in GDB.
+   SLAVE_REQ_CREDIT_CNTL = 0x4010c110L,
+   GARLIC_FLUSH_ADDR_END_0 = 0x000303a0L,
+   GARLIC_FLUSH_ADDR_START_0 = 0x000303a1L.
+
+
+============================ 007 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 007
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.007  15.31@865709 ATOMBuild #252890
+
+Changes Include:
+1. CL863760 - for eDP Power off sequence, using the  LVTMA_PWRDN_DELAY3 (BYTE_2) instead of the LVTMA_PWRUP_DELAY3 (BYTE_1) is more logical.
+
+2. CL863732 - PCIE phy power gating message change due to PCIE phy HW change,
+
+3. CL853585 - add 7th UNIPHY support, definition for DP0 and DP3 should be swaped,
+              DP0 lane[7:4] - map to DCE DIGA
+              DP3 lane[15:12] 0r [15:8] - map to DCE DIGG
+
+4.CL850090 -  interrupt HOST when Sclk throttling lower than the threshold driver programmed.
+
+5. CL 849575 - using 1024x768 instead of the original 800x600 as teh hard coded timing in HW emulation.
+
+6. CL841922 - VBIOS detected incorrect EDID from VGA monitor through DVI-I connector when hot plug different VGA monitor. GOP version to 1.43.
+
+7. CL840153 - In VPU recovery, SMU will put DISPCLK/DPREFCLK in bypass mode to avoid these 2 clock become 0 when DCE get reset. In DISPCLK programming command table, it adds an extra piece of code to switch DISPCLK back to DFS if DISPCLK is in bypass mode.
+
+8. CL826644/822928 - Support 100MHz as GPU intenal timer referece clock. from KV/KB, internal timer ( GPU counter ) no long support /2 divider.
+
+9. CL 822626 - Fix a bug when update TMDS coherent mode flag
+
+
+
+
+============================ 006 VBIOS release  ========================================
+
+Kaveri  generic Baseline VBIOS 006
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.006  staging@824690 ATOMBuild #241886
+
+Changes include:
+1. VDDC voltage calculation is updated.
+   - remove round up, change it to round down
+   - pass voltage(mv) * 4 as argument to SMU
+
+
+
+Kaveri  generic Baseline VBIOS 005
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.005  staging@783391 ATOMBuild #230952
+
+1. This Vbios is built from the latest code cutting off @change list #783391.
+2. Fix the HPD/DDC look up table mismatch error in object information table.
+
+
+Kaveri  generic Baseline VBIOS 004
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.004  staging@774315, ATOMBuild #228758
+
+1. This Vbios is built from the latest code cutting off @change list #774315.
+2. This vbios removes all the hardcoded settings and very close to the bring up Vbios.
+3. All the display devices and the Vbios features have been supported in this Vbios.
+4. Both the GOP driver and Vbios passed the simulation on simNOW
+
+
+Kaveri  generic Baseline VBIOS 003.
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGenericVbios.003  staging@741142 ATOMBuild #219650
+BIOS Info Text File  Built for HW emulation
+
+Major Changes differ from the previous one:
+
+1. Skip display detection to avoid unnecessary code path when run at HWEmulation system.
+2. updated to the latest code @CL741142
+
+
+Kaveri  generic Baseline VBIOS 002.
+Spectre A11 0x1304  105-c45300-000  HCDDIC3.bin  staging@728319 ATOMBuild #215561
+BIOS Info Text File  hardcode DDC3 with DVI in object_infoTable.
+
+Major Changes differ from the previous one:
+
+Hardcoded a DVI display with DDC3 assigned to it in object_infoTable
+
+
+
+Kaveri  generic Baseline VBIOS 001.
+
+Spectre A11 0x1304  105-c45300-000  AMDSpectreGeneric.001  staging@725955 ATOMBuild #214479,
+BIOS Info Text File  generic Vbios for Kaveri family.
+
+This is the first Vbios released for Kaveri HW emulation and simnow. the code is cut at CL725999
+The asic golden settings were based on teh initial settings, and needs to be updated and verified by the ASIC team.
+
+

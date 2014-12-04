@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Debug|Win32">
+			<Configuration>Debug</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|Win32">
+			<Configuration>Release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals" Condition="1==1">
+		<RootNamespace>AMD_Proc_GNB_Modules_GnbInitTN_VS2010</RootNamespace>
+		<ProjectGuid>{25397B65-B26D-4DCF-BAAB-B38243CF5441}</ProjectGuid>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<ImportGroup Label="ExtensionSettings">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+	</ImportGroup>
+	<PropertyGroup Label="UserMacros" Condition="2==2"/>
+	<PropertyGroup Condition="3==3">
+		<_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+	</PropertyGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)";"$(AGESA_ROOT)Include\";"$(AGESA_ROOT)Proc\IDS\";"$(AGESA_ROOT)Lib\";"$(AGESA_ROOT)Proc\GNB\Common\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbTable\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieConfig\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbCommonLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbGfxInitLibV1\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbGfxConfig\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitTN\";"$(AGESA_ROOT)Proc\CPU\";"$(AGESA_ROOT)Proc\CPU\Family\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbSbLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbNbInitLibV1\";"$(AGESA_ROOT)Proc\Common\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieInitLibV1\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieAspm\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbNbInitLibV4\";"$(AGESA_ROOT)Proc\CPU\Family\0x15\TN\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbIvrsLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbSbIommuLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbIommuIvrs\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieTrainingV1\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieInitLibV4\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)";"$(AGESA_ROOT)Include\";"$(AGESA_ROOT)Proc\IDS\";"$(AGESA_ROOT)Lib\";"$(AGESA_ROOT)Proc\GNB\Common\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbTable\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieConfig\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbCommonLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbGfxInitLibV1\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbGfxConfig\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbInitTN\";"$(AGESA_ROOT)Proc\CPU\";"$(AGESA_ROOT)Proc\CPU\Family\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbSbLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbNbInitLibV1\";"$(AGESA_ROOT)Proc\Common\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieInitLibV1\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieAspm\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbNbInitLibV4\";"$(AGESA_ROOT)Proc\CPU\Family\0x15\TN\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbIvrsLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbSbIommuLib\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbIommuIvrs\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieTrainingV1\";"$(AGESA_ROOT)Proc\GNB\Modules\GnbPcieInitLibV4\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemGroup Label="Sources">
+		<ClCompile Include=".\GfxEnvInitTN.c"/>
+		<ClCompile Include=".\GfxGmcInitTN.c"/>
+		<ClInclude Include=".\GfxGmcInitTN.h"/>
+		<ClCompile Include=".\GfxIntegratedInfoTableTN.c"/>
+		<ClCompile Include=".\GfxLibTN.c"/>
+		<ClInclude Include=".\GfxLibTN.h"/>
+		<ClCompile Include=".\GfxMidInitTN.c"/>
+		<ClCompile Include=".\GfxPostInitTN.c"/>
+		<ClCompile Include=".\GfxTablesTN.c"/>
+		<ClCompile Include=".\GnbBapmCoeffCalcTN.c"/>
+		<ClInclude Include=".\GnbBapmCoeffCalcTN.h"/>
+		<ClInclude Include=".\GnbCacWeightsTN.h"/>
+		<ClCompile Include=".\GnbEarlyInitTN.c"/>
+		<ClCompile Include=".\GnbEnvInitTN.c"/>
+		<ClCompile Include=".\GnbFuseTableTN.c"/>
+		<ClInclude Include=".\GnbFuseTableTN.h"/>
+		<ClInclude Include=".\GnbInitTN.h"/>
+		<ClInclude Include=".\GnbInitTNInstall.h"/>
+		<ClCompile Include=".\GnbIommuIvrsTN.c"/>
+		<ClCompile Include=".\GnbMidInitTN.c"/>
+		<ClCompile Include=".\GnbPostInitTN.c"/>
+		<ClCompile Include=".\GnbRegisterAccTN.c"/>
+		<ClInclude Include=".\GnbRegisterAccTN.h"/>
+		<ClCompile Include=".\GnbSmuFirmwareRL.c"/>
+		<ClInclude Include=".\GnbSmuFirmwareRL.h"/>
+		<ClCompile Include=".\GnbSmuFirmwareTN.c"/>
+		<ClInclude Include=".\GnbSmuFirmwareTN.h"/>
+		<ClCompile Include=".\GnbTablesTN.c"/>
+		<ClInclude Include=".\PcieAlibSsdtTNFM2.h"/>
+		<ClInclude Include=".\PcieAlibSsdtTNFS1.h"/>
+		<ClCompile Include=".\PcieAlibTNFM2.c"/>
+		<ClCompile Include=".\PcieAlibTNFS1.c"/>
+		<ClCompile Include=".\PcieComplexDataTN.c"/>
+		<ClInclude Include=".\PcieComplexDataTN.h"/>
+		<ClCompile Include=".\PcieConfigTN.c"/>
+		<ClCompile Include=".\PcieEarlyInitTN.c"/>
+		<ClCompile Include=".\PcieEnvInitTN.c"/>
+		<ClCompile Include=".\PcieLibTN.c"/>
+		<ClInclude Include=".\PcieLibTN.h"/>
+		<ClCompile Include=".\PcieMidInitTN.c"/>
+		<ClCompile Include=".\PciePostInitTN.c"/>
+		<ClCompile Include=".\PciePowerGateTN.c"/>
+		<ClInclude Include=".\PciePowerGateTN.h"/>
+		<ClCompile Include=".\PcieTablesTN.c"/>
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+	<ImportGroup Label="ExtensionTargets">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+	</ImportGroup>
+</Project>

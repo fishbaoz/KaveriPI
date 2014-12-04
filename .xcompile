@@ -1,0 +1,36 @@
+# platform agnostic and host tools
+IASL:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/iasl
+HOSTCC:=gcc
+
+# x86 TARCH_SEARCH=  /home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf- i386-elf- i386-linux-gnu- i386- /home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/x86_64-elf- x86_64-elf- x86_64-linux-gnu- x86_64-
+# elf32-i386 toolchain (/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-gcc)
+ARCH_SUPPORTED+=x86_32
+CC_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-gcc
+CFLAGS_i386:= -Wno-unused-but-set-variable  -fno-stack-protector -Wl,--build-id=none -Wa,--divide  -march=i686
+CPP_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-cpp
+AS_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-as 
+LD_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-ld 
+NM_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-nm
+OBJCOPY_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-objcopy
+OBJDUMP_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-objdump
+READELF_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-readelf
+STRIP_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-strip
+AR_i386:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/i386-elf-ar
+
+# arm TARCH_SEARCH=  /home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7a-eabi- armv7a-eabi- armv7a-linux-gnu- armv7a- /home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi- armv7-a-eabi- armv7-a-linux-gnu- armv7-a-
+# elf32-littlearm toolchain (/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-gcc)
+ARCH_SUPPORTED+=arm
+CC_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-gcc
+CFLAGS_arm:= -Wno-unused-but-set-variable  -fno-stack-protector -Wl,--build-id=none
+CPP_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-cpp
+AS_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-as 
+LD_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-ld 
+NM_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-nm
+OBJCOPY_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-objcopy
+OBJDUMP_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-objdump
+READELF_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-readelf
+STRIP_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-strip
+AR_arm:=/home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/armv7-a-eabi-ar
+
+# aarch64 TARCH_SEARCH=  /home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/aarch64-eabi- aarch64-eabi- aarch64-linux-gnu- aarch64-
+# riscv TARCH_SEARCH=  /home/baozheng/x86/coreboot-gerrit/util/crossgcc/xgcc/bin/riscv-elf- riscv-elf- riscv-linux-gnu- riscv-

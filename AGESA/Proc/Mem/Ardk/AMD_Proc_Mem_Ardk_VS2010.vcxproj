@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Debug|Win32">
+			<Configuration>Debug</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|Win32">
+			<Configuration>Release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals" Condition="1==1">
+		<RootNamespace>AMD_Proc_Mem_Ardk_VS2010</RootNamespace>
+		<ProjectGuid>{8303B884-FA17-4C02-A9DF-786B7F8507E8}</ProjectGuid>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+		<ConfigurationType>StaticLibrary</ConfigurationType>
+		<WholeProgramOptimization>false</WholeProgramOptimization>
+	</PropertyGroup>
+	<ImportGroup Label="ExtensionSettings">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props"/>
+	</ImportGroup>
+	<PropertyGroup Label="UserMacros" Condition="2==2"/>
+	<PropertyGroup Condition="3==3">
+		<_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+		<OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\</OutDir>
+		<IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(AGESA_OptsDir)$(Configuration)\$(ProjectName)\</IntDir>
+		<ExtensionsToDeleteOnClean Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">*.obj%3b*.lib%3b*.tmp%3b*.dll%3b*.B1%3b*.BDI%3b$(IntDir)$(ProjectName)_BuildLog.htm</ExtensionsToDeleteOnClean>
+	</PropertyGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)";"$(AGESA_ROOT)Proc\Mem\";"$(AGESA_ROOT)Include\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+		<BuildLog>
+			<Path>$(IntDir)$(ProjectName)_BuildLog.htm</Path>
+		</BuildLog>
+		<MASM>
+			<IncludePaths/>
+		</MASM>
+		<ClCompile>
+			<AdditionalOptions>/Gs16384 %(AdditionalOptions)</AdditionalOptions>
+			<AdditionalIncludeDirectories>"$(AGESA_OptsDir)";"$(AGESA_ROOT)";"$(AGESA_ROOT)Proc\Mem\";"$(AGESA_ROOT)Include\";</AdditionalIncludeDirectories>
+			<Optimization>MinSpace</Optimization>
+			<FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+			<WholeProgramOptimization>true</WholeProgramOptimization>
+			<IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+			<BufferSecurityCheck>false</BufferSecurityCheck>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ObjectFileName>$(IntDir)</ObjectFileName>
+			<ProgramDataBaseFileName>$(IntDir)$(ProjectName).pdb</ProgramDataBaseFileName>
+			<XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<CompileAs>CompileAsC</CompileAs>
+		</ClCompile>
+		<Bscmake>
+			<OutputFile>$(OutDir)$(ProjectName).bsc</OutputFile>
+		</Bscmake>
+		<Lib>
+			<OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+		</Lib>
+	</ItemDefinitionGroup>
+	<ItemGroup Label="Sources">
+		<ClCompile Include=".\ma.c"/>
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+	<ImportGroup Label="ExtensionTargets">
+		<Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
+	</ImportGroup>
+</Project>

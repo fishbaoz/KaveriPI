@@ -1,0 +1,189 @@
+
+                        Release Notes for
+                        -----------------
+                      Ballina CPM OEM Driver
+
+
+=============================================================================
+
+Version: 1.1.0.5                                    Release Date: April 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.1.0.4                                    Release Date: April 2014
+
+=============================================================================
+
+- BUG442724: eDP won't light on after the jumper on "LID close" is removed
+
+
+=============================================================================
+
+Version: 1.1.0.3                                    Release Date: March 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.1.0.2                                    Release Date: February 2014
+
+=============================================================================
+
+- None
+
+
+=============================================================================
+
+Version: 1.1.0.1                                    Release Date: February 2014
+
+=============================================================================
+
+- ENH433802: Add CMOS option for SSID override control
+- ENH433942: CPM SSID override control
+- ENH433597: Modifying the SSID of a dGPU device on KV platform
+
+
+=============================================================================
+
+Version: 1.1.0.0                                    Release Date: January 2014
+
+=============================================================================
+
+- OBS426450: Unable to get visual via LVDS with Travis DDI - EPR390581
+
+=============================================================================
+
+Version: 1.0.8.0                                    Release Date: November 2013
+
+=============================================================================
+
+- None
+
+=============================================================================
+
+Version: 1.0.0.0                                    Release Date: November 2013
+
+=============================================================================
+
+- ENH422284: Set the function of GPIO52 to 0 (Fanout0) on Ballina
+
+=============================================================================
+
+Version: 0.0.8.2                                    Release Date: October 2013
+
+=============================================================================
+
+- None
+
+=============================================================================
+
+Version: 0.0.8.1                                    Release Date: September 2013
+
+=============================================================================
+
+- ENH415878: SBIOS workaround for DL DVI card
+- ENH415854: USBCLK/OSCOUT2 clock output not turned off
+- BUG417124: DDI to PCIe adapter card does not work on Ballina
+
+=============================================================================
+
+Version: 0.0.8.0                                    Release Date: August 2013
+
+=============================================================================
+
+- ENH410090: C361 card have different SMBUS address and add new address
+- ENH404717: BIOS CPM Optimization
+- BUG410921: Ballina FP3 boards shutdown intermittently
+- BUG410923: 4:1:1:1:1 configuration does not work
+
+=============================================================================
+
+Version: 0.0.6.3                                    Release Date: July 2013
+
+=============================================================================
+
+- ENH404552: No option in bios to enable Hybrid Crossfire in "Special Graphics Feature"
+- BUG405072: CPM style issue
+- ENH405834: Update smbus address for DMC card
+
+=============================================================================
+
+Version: 0.0.6.2                                    Release Date: June 2013
+
+=============================================================================
+
+- BUG399775: GFX port is always disabled without MXM
+- ENH400023: Move iGPU special post in function GetPostedVbiosImage
+- ENH400196: Adding support of two level of VDDR/VDDP on some mobile OPN for KV
+- BUG403143: Both Realtek DP to LVDS translators show Dead PC
+
+=============================================================================
+
+Version: 0.0.6.1                                    Release Date: May 2013
+
+=============================================================================
+
+- ENH396514: Update Device Id list to support PowerXpress
+- ENH398446: Add 4xDP MXM adaptor card support
+- ENH399512: Hold PCIe reset pin until GFX mux pin is set
+- ENH399513: Add default setup setting when cmos is corrupted
+
+=============================================================================
+
+Version: 0.0.6.0                                    Release Date: April 2013
+
+=============================================================================
+
+- ENH384035: Add PowerXpress 5.6 support for Ballina
+- ENH384762: Update cmos offset for CPM save context
+- ENH385921: Add external clock support for Ballina
+- ENH385938: Add ClkReq setup option
+- BUG390595: Incorrect Table Size For The AMD_CPM_GPIO_DEVICE_RESET_TABLE Table
+- ENH393184: Change GPIO55 Function to 3/Add auto-detection codes for display port D
+- ENH391369: SB port (UMI-link) ASPM and link speed does not follow CMOS settings
+
+=============================================================================
+
+Version: 0.0.3.0                                    Release Date: January 2013
+
+=============================================================================
+
+- ENH372956: Add an option to enable _PRW method
+- ENH375686: Skip PCIe training on unused GPP port in S3 resume
+- DEV380416: Add Adaptive S4 support for Ballina
+- ENH381037: Add Wireless Button Support for Ballina
+- ENH381060: Enable S5+ support for Ballina
+
+=============================================================================
+
+Version: 0.0.1.2                                    Release Date: October 2012
+
+=============================================================================
+
+- ENH367347: Add GPIO setting of VDDR_VDDP_VCTRL
+
+=============================================================================
+
+Version: 0.0.1.1                                    Release Date: September 2012
+
+=============================================================================
+
+- DEV332304: Power on wireless as the default
+- DEV332340: Switch VGA_PD when dGpu is primary
+- DEV346291: Add setup sample code and change the method to get variable
+
+=============================================================================
+
+Version: 0.0.1.0                                    Release Date: 09 May 2012
+
+=============================================================================
+
+- First version of Ballina/Ratmore CPM OEM Driver
