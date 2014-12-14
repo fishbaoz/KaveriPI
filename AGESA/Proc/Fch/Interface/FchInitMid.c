@@ -94,6 +94,7 @@ FchInitMid (
 
   IDS_HDT_CONSOLE (FCH_TRACE, "  FchInitMid Enter... \n");
   FchParams = FchInitLoadDataBlock (&MidParams->FchInterface, &MidParams->StdHeader);
+  AgesaFchOemCallout (FchParams);
   Status = FchTaskLauncher (&FchInitMidTaskTable[0], FchParams, TpFchInitMidDispatching);
   IDS_HDT_CONSOLE (FCH_TRACE, "  FchInitMid Exit... Status = [0x%x]\n", Status);
   return Status;
